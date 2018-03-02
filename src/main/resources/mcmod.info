@@ -1,0 +1,16 @@
+[
+{
+  "modid": "liquidenchanting",
+  "name": "Liquid Enchanting",
+  "description": "One potion to Take-Away please!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Cookiehook"],
+  "credits": "MinecraftForum: Choonster",
+  "logoFile": "assets/liquidenchanting/textures/ModLogo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
