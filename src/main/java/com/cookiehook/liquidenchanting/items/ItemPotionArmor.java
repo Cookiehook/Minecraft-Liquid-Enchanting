@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.cookiehook.liquidenchanting.init.ModItems;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
@@ -13,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemPotionArmor extends ItemArmor {
 
@@ -21,7 +21,7 @@ public class ItemPotionArmor extends ItemArmor {
 	
 	/**
 	 * Creates an Armor Item, inheriting all vanilla behaviour from ItemArmor.
-	 * @param material - An armor material such as Cloth, Iron, Gold. e.g. ArmorMaterial.CLOTH
+	 * @param material - An armor material such as Cloth, Iron, Gold. e.g. ArmorMaterial.LEATHER
 	 * @param renderIndex - Used on RenderPlayer to select the correspondent armor to be rendered on the player:
 	 *  0 is cloth, 1 is chain, 2 is iron, 3 is diamond and 4 is gold.
 	 * @param armorType - Whether this is a helmet (0), chestplate (1), leggings (2) or boots (3).
@@ -48,7 +48,7 @@ public class ItemPotionArmor extends ItemArmor {
 	
 	// This method is called on every game tick (20x per second), adding a potion effect to the player.
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		player.addPotionEffect(new PotionEffect(potion.id, duration, amplifier));
+		player.addPotionEffect(new PotionEffect(potion.id, duration, amplifier, false, false));
 	}
 	
 	//Gives the "enchanted" animation.

@@ -27,6 +27,6 @@ public class ItemDecrementingPotionArmor extends ItemPotionArmor {
 	// Potions that effect health rely on the counter ticking down. This method lets potions count down and give their effect.
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if (!player.isPotionActive(potion))
-			player.addPotionEffect(new PotionEffect(potion.id, duration, amplifier));
+			player.addPotionEffect(new PotionEffect(potion.id, duration, amplifier, false, false));
 	}
 }
