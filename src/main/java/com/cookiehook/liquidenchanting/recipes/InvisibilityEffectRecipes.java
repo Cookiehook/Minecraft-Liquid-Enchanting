@@ -3,9 +3,9 @@ package com.cookiehook.liquidenchanting.recipes;
 import com.cookiehook.liquidenchanting.init.InvisibilityEffectItems;
 import com.cookiehook.liquidenchanting.util.ShapedArmorUpgradeRecipe;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class InvisibilityEffectRecipes {
