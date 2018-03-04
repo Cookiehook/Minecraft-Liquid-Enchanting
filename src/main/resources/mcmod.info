@@ -5,11 +5,11 @@
   "description": "One potion to Take-Away please!",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/liquid-enchanting",
   "updateUrl": "",
   "authorList": ["Cookiehook"],
   "credits": "MinecraftForum: Choonster",
-  "logoFile": "assets/liquidenchanting/textures/ModLogo.png",
+  "logoFile": "assets/liquidenchanting/textures/modLogo.png",
   "screenshots": [],
   "dependencies": []
 }
