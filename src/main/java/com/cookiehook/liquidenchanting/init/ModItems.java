@@ -6,7 +6,7 @@ import java.util.List;
 import com.cookiehook.liquidenchanting.util.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -15,9 +15,8 @@ public class ModItems {
 	// constructors. Used for registration later.
 	public static List<Item> itemList = new ArrayList<Item>();
 
-	// Basic item to be used for creative tabs, game demos etc. Only available
-	// through command line.
-	public static Item liquid_enchanting = new Item().setUnlocalizedName("liquid_enchanting");
+	// Basic item to be used for creative tabs, game demos etc. Only available through command line.
+	public static Item liquid_enchanting = new Item().setUnlocalizedName("liquid_enchanting").setRegistryName("liquid_enchanting");
 
 	// Calls the init() method of each class in this package, forcing the Item
 	// declaration code to run.
@@ -40,11 +39,11 @@ public class ModItems {
 	}
 
 	public static void register() {
-		GameRegistry.registerItem(liquid_enchanting, liquid_enchanting.getUnlocalizedName().substring(5));
+		GameRegistry.register(liquid_enchanting);
 
 		// Loops through every Item in the itemList and registers it.
 		for (Item item : itemList) {
-			GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+			GameRegistry.register(item);
 		}
 	}
 
