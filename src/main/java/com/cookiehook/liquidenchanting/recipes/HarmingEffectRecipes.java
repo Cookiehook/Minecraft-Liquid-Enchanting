@@ -29,15 +29,15 @@ public class HarmingEffectRecipes {
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 
 		// HarmingII Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harming_wooden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_wooden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
 				new ItemStack(Items.WOODEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harming_stone_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_stone_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
 				new ItemStack(Items.STONE_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harming_iron_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_iron_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
 				new ItemStack(Items.IRON_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harming_golden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_golden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
 				new ItemStack(Items.GOLDEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harming_diamond_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_diamond_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 	}
 }

@@ -30,7 +30,7 @@ public class Main {
 	public void PreInit(FMLPreInitializationEvent event) {
 		configDir = new File(event.getModConfigurationDirectory() + "/" + Reference.MOD_ID);
 		configDir.mkdir();
-		Config.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
+		Config.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));		
 		
 		ModItems.init();
 		ModItems.register();

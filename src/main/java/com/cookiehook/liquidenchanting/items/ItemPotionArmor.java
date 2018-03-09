@@ -38,7 +38,7 @@ public class ItemPotionArmor extends ItemArmor {
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		player.addPotionEffect(new PotionEffect(potion, duration, amplifier, false, false));
 	}
-	
+		
 	public boolean hasEffect(ItemStack itemstack) {
 		return true;
 	}

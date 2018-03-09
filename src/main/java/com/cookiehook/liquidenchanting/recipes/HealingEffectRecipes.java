@@ -29,15 +29,15 @@ public class HealingEffectRecipes {
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 
 		// HealingII Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healing_wooden_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healingII_wooden_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
 				new ItemStack(Items.WOODEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healing_stone_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healingII_stone_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
 				new ItemStack(Items.STONE_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healing_iron_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healingII_iron_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
 				new ItemStack(Items.IRON_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healing_golden_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healingII_golden_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
 				new ItemStack(Items.GOLDEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healing_diamond_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HealingEffectItems.healingII_diamond_sword, "AAA", "ABA", "AAA", 'A', healingIIPotion, 'B',
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 	}
 }

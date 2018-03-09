@@ -1,14 +1,14 @@
-Crafting successfully returns appropriate object. - Try one sword & armor for each potion.
-Wearing armor applies potion correctly.
-Poison & Regeneration successfully count down when applied
-Swords apply potion effect for 10 seconds.
+--Crafting successfully returns appropriate object. - Try one sword & armor for each potion.
+--Wearing armor applies potion correctly.
+--Poison & Regeneration successfully count down when applied
+--Swords apply potion effect for 10 seconds.
 
-Can craft using damaged weapons & armor.
-Crafting retains custom names and enchantments.
-Configuration allows enabling / disabling crafting.
+--Can craft using damaged weapons & armor.
+--Crafting retains custom names and enchantments.
+--Configuration allows enabling / disabling crafting.
 
 All textures render correctly as Items, when held, when worn
-All items have correctly localised names.
+--All items have correctly localised names.
 
 Versioning set correctly.
 Compiled mod loads on single player with correct modInfo.
