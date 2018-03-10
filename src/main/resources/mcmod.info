@@ -8,7 +8,7 @@
   "url": "https://minecraft.curseforge.com/projects/liquid-enchanting",
   "updateUrl": "",
   "authorList": ["Cookiehook"],
-  "credits": "MinecraftForum: Choonster",
+  "credits": "MinecraftForum: Choonster, for help with custom crafting manager",
   "logoFile": "assets/liquidenchanting/textures/modLogo.png",
   "screenshots": [],
   "dependencies": []

@@ -14,51 +14,39 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemPotionSword extends ItemSword{
+public class ItemPotionSword extends ItemSword {
 	
 	Potion potion;
 	private int duration, amplifier;
 	
 	
-	public ItemPotionSword(ToolMaterial material, Potion potion) {
-		//Passes a default duration 200 and amplifier 0 to the main constructor.
-		this(material, potion, 200, 0);
+	public ItemPotionSword(ToolMaterial material, Potion potion, String name) {
+		this(material, potion, 200, 0, name);
 	}
 	
-	/**
-	 * Creates a sword object, using the following parameters:
-	 * @param material - The ToolMaterial needed. This sets properties such as efficiency, durability reduction etc.
-	 * @param potionEffect - A PotionEffect object, which will be added to the hit entity.
-	 */
-	public ItemPotionSword(ToolMaterial material, Potion potion, int duration, int amplifier) {
-		//Passes the toolMaterial parameter to the ItemSword constructor, which actually does the work.
+	public ItemPotionSword(ToolMaterial material, Potion potion, int duration, int amplifier, String name) {
 		super(material);
 		
-		//Adds the created item to the itemList for registration.
 		ModItems.itemList.add(this);
 		this.potion = potion;
 		this.duration = duration;
 		this.amplifier = amplifier;
+		setUnlocalizedName(name);
+		setRegistryName(name);
 	}
 	
-	//Adds the potion effect to any entity hit by the sword.
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
-		hitEntity.addPotionEffect(new PotionEffect(potion.id, duration, amplifier));
+		hitEntity.addPotionEffect(new PotionEffect(potion, duration, amplifier));
 		return true;
 	}
 	
-	//Gives the "enchanted" animation.
 	public boolean hasEffect(ItemStack itemstack) {
 		return true;
 	}
 	
-	// Adds the potion type as a tooltip.
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
-		// Gets the potion name from the potion effect, and registers with the
-		// localisation resources.
-		// This allows it to be translated by .lang files.
 		String potionName = I18n.format(potion.getName());
 		String level = "";
 		if (amplifier == 1)

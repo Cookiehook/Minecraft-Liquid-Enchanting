@@ -21,16 +21,16 @@ public class Main {
 
 	@Instance(Reference.MOD_ID)
 	public static Main instance;
-	private static File configDir;
+	public static File configDir;
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
-	
+
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event) {
 		configDir = new File(event.getModConfigurationDirectory() + "/" + Reference.MOD_ID);
 		configDir.mkdir();
-		Config.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
+		Config.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));		
 		
 		ModItems.init();
 		ModItems.register();

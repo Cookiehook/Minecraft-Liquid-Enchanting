@@ -25,7 +25,7 @@ public class ModRecipes {
 		if(Config.enableStrengthArmor) StrengthEffectRecipes.addArmorRecipes();
 		if(Config.enableWaterBreathingArmor) WaterBreathingEffectRecipes.addArmorRecipes();
 		if(Config.enableWeaknessArmor) WeaknessEffectRecipes.addArmorRecipes();
-		
+				
 		if(Config.enableFireResistanceSword) FireResistanceEffectRecipes.addSwordRecipes();
 		if(Config.enableHarmingSword) HarmingEffectRecipes.addSwordRecipes();
 		if(Config.enableHasteSword) HasteEffectRecipes.addSwordRecipes();
@@ -44,6 +44,7 @@ public class ModRecipes {
 	}
 
 	private static void registerRecipeClasses() {
-		RecipeSorter.register("liquidenchanting:shapedarmourupgrade", ShapedArmorUpgradeRecipe.class, SHAPED, "after:forge:shapedore before:minecraft:shapeless");
+		RecipeSorter.register("liquidenchanting:shapedarmourupgrade", ShapedArmorUpgradeRecipe.class, SHAPED,
+				"after:forge:shapedore before:minecraft:shapeless");
 	}
 }
