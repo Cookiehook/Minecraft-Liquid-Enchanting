@@ -1,6 +1,7 @@
 package com.cookiehook.liquidenchanting.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -41,7 +42,7 @@ public class ShapedArmorUpgradeRecipe extends ShapedOreRecipe {
 
 			if (ingredient != null && (ingredient.getItem() instanceof ItemArmor || ingredient.getItem() instanceof ItemSword)) {
 				// Calculate incoming item's damage value, adding it to the output.
-				int newDamage = MathHelper.clamp_int(ingredient.getItemDamage(), 0, output.getMaxDamage());
+				int newDamage = MathHelper.clamp(ingredient.getItemDamage(), 0, output.getMaxDamage());
 				output.setItemDamage(newDamage);
 
 				// Calculate incoming item's enchantments, add it to the output.
@@ -76,7 +77,8 @@ public class ShapedArmorUpgradeRecipe extends ShapedOreRecipe {
 					if (!OreDictionary.itemMatches((ItemStack) target, slot, false)) {
 						return false;
 					} else if (PotionUtils.getPotionFromItem((ItemStack) target) != PotionUtils.getPotionFromItem(slot)) {
-						return false;
+						if (!(x == 1 && y == 1))
+							return false;
 					}
 
 				} else if (target == null && slot != null) {
