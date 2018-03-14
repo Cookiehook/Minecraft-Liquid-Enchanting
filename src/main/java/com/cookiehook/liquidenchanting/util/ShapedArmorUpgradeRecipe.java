@@ -1,6 +1,7 @@
 package com.cookiehook.liquidenchanting.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -76,7 +77,8 @@ public class ShapedArmorUpgradeRecipe extends ShapedOreRecipe {
 					if (!OreDictionary.itemMatches((ItemStack) target, slot, false)) {
 						return false;
 					} else if (PotionUtils.getPotionFromItem((ItemStack) target) != PotionUtils.getPotionFromItem(slot)) {
-						return false;
+						if (!(x == 1 && y == 1))
+							return false;
 					}
 
 				} else if (target == null && slot != null) {
