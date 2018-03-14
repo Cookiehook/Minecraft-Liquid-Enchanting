@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModItems {
 	// List to store all items in the mod. Items are added to this list by the item
@@ -68,6 +70,7 @@ public class ModItems {
 
 	// Registers the overlay color for leather armor on the item sprites.
 	// If omitted, the items always show a white color, regardless of dyes.
+	@SideOnly(Side.CLIENT)
 	private static void registerColor(Item item) {
 		if (item instanceof ItemArmor) {
 			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
