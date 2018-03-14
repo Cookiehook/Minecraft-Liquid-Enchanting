@@ -41,7 +41,7 @@ public class ShapedArmorUpgradeRecipe extends ShapedOreRecipe {
 
 			if (ingredient != null && (ingredient.getItem() instanceof ItemArmor || ingredient.getItem() instanceof ItemSword)) {
 				// Calculate incoming item's damage value, adding it to the output.
-				int newDamage = MathHelper.clamp_int(ingredient.getItemDamage(), 0, output.getMaxDamage());
+				int newDamage = MathHelper.clamp(ingredient.getItemDamage(), 0, output.getMaxDamage());
 				output.setItemDamage(newDamage);
 
 				// Calculate incoming item's enchantments, add it to the output.
