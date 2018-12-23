@@ -1,11 +1,10 @@
 package com.cookiehook.liquidenchanting.proxy;
 
+import net.minecraft.item.Item;
+
 public class CommonProxy {
 
-	/**
-	 * Placeholder method. Allows us to call registerRender on the CommonProxy or
-	 * ClientProxy class, letting forge decide which one is needed.
-	 */
-	public void registerRenders() {
-	}
+    public void registerItemRenderer(Item item, int meta, String id) {
+
+    }
 }
