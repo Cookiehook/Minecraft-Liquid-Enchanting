@@ -36,7 +36,6 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
     public static class CopyNBTRecipe extends ShapedOreRecipe {
 
         public CopyNBTRecipe(ResourceLocation group, ItemStack result, CraftingHelper.ShapedPrimer primer) {
-
             super(group, result, primer);
         }
 
@@ -44,34 +43,27 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
          * Custom crafting method to return the correct potion imbewed item based on the recipes. This overrides
          * the output from the JSON recipe, as there's no way to specify potion's NBT as an ingredient as of 1.12.2.
          * Method also preserves damage and enchantments from the original item.
-         *
-         * @param inventory
-         * @return
          */
         @Override
         @Nonnull
         public ItemStack getCraftingResult(@Nonnull InventoryCrafting inventory) {
-            //Get the appropriate item for the potions provided.
-            NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
-            String tagString = targetPotion.getTag("Potion").toString().replace("\"", "");
-            Item outputItem = ModItems.effectMap.get(tagString);
-            ItemStack output = new ItemStack(outputItem);
-
             //Get the input item in the central slot, which will always be the sword / armor.
-            ItemStack ingredient = inventory.getStackInSlot(4);
-            if (ingredient != null && (ingredient.getItem() instanceof ItemArmor || ingredient.getItem() instanceof ItemSword)) {
+            ItemStack centreItemStack = inventory.getStackInSlot(4);
+            NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
+            ItemStack output = new ItemStack(getModItemFromDictionary(targetPotion, centreItemStack.getItem()));
+
+            if (centreItemStack != null && (centreItemStack.getItem() instanceof ItemArmor || centreItemStack.getItem() instanceof ItemSword)) {
                 // Calculate incoming item's damage value, adding it to the output.
-                int newDamage = MathHelper.clamp(ingredient.getItemDamage(), 0, output.getMaxDamage());
+                int newDamage = MathHelper.clamp(centreItemStack.getItemDamage(), 0, output.getMaxDamage());
                 output.setItemDamage(newDamage);
 
                 // Calculate incoming item's enchantments, add it to the output.
-                NBTTagCompound enchant = ingredient.getTagCompound();
+                NBTTagCompound enchant = centreItemStack.getTagCompound();
                 output.setTagCompound(enchant);
             }
 
             return output;
         }
-
 
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
             //First, call the standard check for ingredient matching. (All the right items in all the right places)
@@ -94,10 +86,8 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
                             return false;
                         }
                     }
-                    //Find the appropriate item for the given set of potions, and check that it's implemented.
-                    String tagString = targetPotion.getTag("Potion").toString().replace("\"", "");
-                    Item output = ModItems.effectMap.get(tagString);
-                    if (output == null) {
+                    // Check that a mod item for this potion has been implemented
+                    if (getModItemFromDictionary(targetPotion, inventory.getStackInSlot(4).getItem()) == null) {
                         return false;
                     }
                 }
@@ -106,5 +96,28 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
                 return false;
             }
         }
+
+        /**
+         *
+         * @param potionTag NBT Tag Compound from the potion, used to get potion name.
+         * @param item Vanilla armor / sword used in crafting recipe, used to get material and armor slot.
+         * @return Instance of mod armor / sword
+         */
+        private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
+            String potionName = potionTag.getTag("Potion").toString().replace("\"", "");
+            String dictionaryKey;
+
+            if(item instanceof ItemArmor) {
+                String materialName = ((ItemArmor)item).getArmorMaterial().getName();
+                String slotName = ((ItemArmor)item).getEquipmentSlot().getName();
+                dictionaryKey = materialName + slotName + potionName;
+            } else {
+                dictionaryKey = "";
+            }
+            return ModItems.effectMap.get(dictionaryKey);
+        }
+
+
+
     }
 }

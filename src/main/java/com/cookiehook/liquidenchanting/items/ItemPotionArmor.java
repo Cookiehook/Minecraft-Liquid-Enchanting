@@ -21,10 +21,10 @@ import java.util.List;
 
 public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
-    protected Potion potion;
-    protected int duration, amplifier;
+    private Potion potion;
+    private int duration, amplifier;
 
-    protected ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name, int renderIndex) {
+    public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name, int renderIndex) {
         this(material, armorType, potion, 10, 0, name, renderIndex);
     }
 
@@ -39,6 +39,12 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
         setCreativeTab(CreativeTabs.COMBAT);
         ModItems.ITEMS.add(this);
+
+        String materialName = material.getName();
+        String slotName = armorType.getName();
+        String potionName = potion.getRegistryName().toString();
+        ModItems.effectMap.put(materialName + slotName + potionName, this);
+
     }
 
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {

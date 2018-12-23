@@ -2,7 +2,6 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemBase;
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
-import com.cookiehook.liquidenchanting.items.ItemPotionIronHelmet;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -21,13 +20,8 @@ public class ModItems {
 
     public static final Item liquid_enchanting = new ItemBase("liquid_enchanting");
 
-    public static final Item invisibility_iron_helmet = new ItemPotionIronHelmet(MobEffects.INVISIBILITY, "invisibility_iron_helmet", 1);
+    public static final Item invisibility_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, EntityEquipmentSlot.HEAD, MobEffects.INVISIBILITY, "invisibility_iron_helmet", 1);
+    public static final Item strength_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, EntityEquipmentSlot.HEAD, MobEffects.STRENGTH, "strength_iron_helmet", 1);
 
-//    public static final Item invisibility_iron_helmet = new ItemPotionArmor("invisibility_iron_helmet", ItemArmor.ArmorMaterial.IRON, 1, EntityEquipmentSlot.HEAD);
-
-
-    public static void populateEffectMap() {
-        effectMap.put("minecraft:invisibility", invisibility_iron_helmet);
-    }
 
 }
