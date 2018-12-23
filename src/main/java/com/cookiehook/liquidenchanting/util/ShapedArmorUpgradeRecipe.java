@@ -1,7 +1,6 @@
 package com.cookiehook.liquidenchanting.util;
 
-
-import com.cookiehook.liquidenchanting.init.ModItems;
+import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -114,7 +113,7 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
             } else {
                 dictionaryKey = "";
             }
-            return ModItems.effectMap.get(dictionaryKey);
+            return ItemPotionArmor.effectMap.get(dictionaryKey);
         }
 
 

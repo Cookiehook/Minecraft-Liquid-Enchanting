@@ -8,6 +8,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -17,19 +18,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
-    private Potion potion;
-    private int duration, amplifier;
+    protected Potion potion;
+    protected int duration, amplifier;
+    public static Map<String, Item> effectMap = new HashMap<String, Item>();
 
-    public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name, int renderIndex) {
-        this(material, armorType, potion, 10, 0, name, renderIndex);
+    public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name) {
+        this(material, armorType, potion, 10, 0, name);
     }
 
-    private ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, int duration, int amplifier, String name, int renderIndex) {
-        super(material, renderIndex, armorType);
+    public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, int amplifier, String name) {
+        this(material, armorType, potion, 10, amplifier, name);
+    }
+
+    public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, int duration, int amplifier, String name) {
+        super(material, 0, armorType);
 
         this.potion = potion;
         this.duration = duration;
@@ -43,7 +51,7 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         String materialName = material.getName();
         String slotName = armorType.getName();
         String potionName = potion.getRegistryName().toString();
-        ModItems.effectMap.put(materialName + slotName + potionName, this);
+        effectMap.put(materialName + slotName + potionName, this);
 
     }
 
