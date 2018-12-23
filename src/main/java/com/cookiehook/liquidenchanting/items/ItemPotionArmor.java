@@ -4,6 +4,7 @@ import com.cookiehook.liquidenchanting.Main;
 import com.cookiehook.liquidenchanting.init.ModItems;
 import com.cookiehook.liquidenchanting.util.IHasModel;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -15,12 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
-    private Potion potion;
-    private int duration, amplifier;
+    protected Potion potion;
+    protected int duration, amplifier;
 
     protected ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name, int renderIndex) {
         this(material, armorType, potion, 10, 0, name, renderIndex);
@@ -47,16 +49,14 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         return true;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         String potionName = I18n.format(potion.getName());
         String level = "";
         if (amplifier == 1)
             level = "II";
         tooltip.add(potionName + " " + level);
     }
-
 
     @Override
     public void registerModels() {
