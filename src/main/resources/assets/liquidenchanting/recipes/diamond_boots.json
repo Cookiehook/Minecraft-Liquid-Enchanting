@@ -1,0 +1,21 @@
+{
+  "type": "liquidenchanting:copy_nbt",
+  "pattern": [
+    "PPP",
+    "PHP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:potion"
+    },
+    "H": {
+      "item" : "minecraft:diamond_boots",
+      "data": 32767
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:liquid_enchanting",
+    "count": 1
+  }
+}
