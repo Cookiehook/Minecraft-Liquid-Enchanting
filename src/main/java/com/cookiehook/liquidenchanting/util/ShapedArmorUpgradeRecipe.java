@@ -103,7 +103,7 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
          * @return Instance of mod armor / sword
          */
         private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
-            String potionName = potionTag.getTag("Potion").toString().replace("\"", "");
+            String potionName = potionTag.getTag("Potion").toString().split(":")[1].replace("\"", "");
             String dictionaryKey;
 
             if(item instanceof ItemArmor) {

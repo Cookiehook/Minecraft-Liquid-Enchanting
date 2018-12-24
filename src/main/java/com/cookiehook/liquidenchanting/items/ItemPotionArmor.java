@@ -50,7 +50,7 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
         String materialName = material.getName();
         String slotName = armorType.getName();
-        String potionName = potion.getRegistryName().toString();
+        String potionName = getPotionName();
         effectMap.put(materialName + slotName + potionName, this);
 
     }
@@ -75,5 +75,24 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
     @Override
     public void registerModels() {
         Main.proxy.registerItemRenderer(this, 0, "inventory");
+    }
+
+    /**
+     * Converts the name of the input potion to the name from the potion item's NBT tag.
+     * Necessary to handle inconsistency between MobEffect and NBT naming.
+     * @return Name of potion
+     */
+    private String getPotionName() {
+        String potionName = potion.getRegistryName().toString().split(":")[1];
+        if (potionName.equals("jump_boost"))
+            potionName = "leaping";
+        else if(potionName.equals("speed"))
+            potionName = "swiftness";
+
+        if(amplifier == 1)
+            potionName = "strong_" + potionName;
+
+        return potionName;
+
     }
 }
