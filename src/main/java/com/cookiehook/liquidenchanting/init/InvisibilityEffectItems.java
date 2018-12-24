@@ -1,11 +1,13 @@
 package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class InvisibilityEffectItems {
@@ -31,11 +33,11 @@ public class InvisibilityEffectItems {
     public static Item invisibility_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.INVISIBILITY, "invisibility_diamond_leggings");
     public static Item invisibility_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.INVISIBILITY, "invisibility_diamond_boots");
 
-//    public static Item invisibility_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.INVISIBILITY, "invisibility_wooden_sword");
-//    public static Item invisibility_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.INVISIBILITY, "invisibility_stone_sword");
-//    public static Item invisibility_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.INVISIBILITY, "invisibility_iron_sword");
-//    public static Item invisibility_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.INVISIBILITY, "invisibility_golden_sword");
-//    public static Item invisibility_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INVISIBILITY, "invisibility_diamond_sword");
+    public static Item invisibility_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.INVISIBILITY, "invisibility_wooden_sword");
+    public static Item invisibility_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.INVISIBILITY, "invisibility_stone_sword");
+    public static Item invisibility_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.INVISIBILITY, "invisibility_iron_sword");
+    public static Item invisibility_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.INVISIBILITY, "invisibility_golden_sword");
+    public static Item invisibility_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INVISIBILITY, "invisibility_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Invisibility Items");

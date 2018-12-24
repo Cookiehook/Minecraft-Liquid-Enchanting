@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class NightVisionEffectItems {
@@ -31,11 +33,11 @@ public class NightVisionEffectItems {
     public static Item nightVision_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.NIGHT_VISION, 210, 0, "nightVision_diamond_leggings");
     public static Item nightVision_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.NIGHT_VISION, 210, 0, "nightVision_diamond_boots");
 
-//    public static Item nightVision_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.NIGHT_VISION, "nightVision_wooden_sword");
-//    public static Item nightVision_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.NIGHT_VISION, "nightVision_stone_sword");
-//    public static Item nightVision_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.NIGHT_VISION, "nightVision_iron_sword");
-//    public static Item nightVision_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.NIGHT_VISION, "nightVision_golden_sword");
-//    public static Item nightVision_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.NIGHT_VISION, "nightVision_diamond_sword");
+    public static Item nightVision_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.NIGHT_VISION, "nightVision_wooden_sword");
+    public static Item nightVision_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.NIGHT_VISION, "nightVision_stone_sword");
+    public static Item nightVision_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.NIGHT_VISION, "nightVision_iron_sword");
+    public static Item nightVision_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.NIGHT_VISION, "nightVision_golden_sword");
+    public static Item nightVision_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.NIGHT_VISION, "nightVision_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Night Vision Items");

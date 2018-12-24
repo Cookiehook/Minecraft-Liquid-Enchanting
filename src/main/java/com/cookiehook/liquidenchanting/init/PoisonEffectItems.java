@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemDecrementingPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class PoisonEffectItems {
@@ -52,17 +54,17 @@ public class PoisonEffectItems {
     public static Item poisonII_diamond_leggings = new ItemDecrementingPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.POISON, 1, "poisonII_diamond_leggings");
     public static Item poisonII_diamond_boots = new ItemDecrementingPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.POISON, 1, "poisonII_diamond_boots");
 
-//    public static Item poison_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.POISON, "poison_wooden_sword");
-//    public static Item poison_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.POISON, "poison_stone_sword");
-//    public static Item poison_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.POISON, "poison_iron_sword");
-//    public static Item poison_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.POISON, "poison_golden_sword");
-//    public static Item poison_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.POISON, "poison_diamond_sword");
-//
-//    public static Item poisonII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.POISON, 1, "poisonII_wooden_sword");
-//    public static Item poisonII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.POISON, 1, "poisonII_stone_sword");
-//    public static Item poisonII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.POISON, 1, "poisonII_iron_sword");
-//    public static Item poisonII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.POISON, 1, "poisonII_golden_sword");
-//    public static Item poisonII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.POISON, 1, "poisonII_diamond_sword");
+    public static Item poison_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.POISON, "poison_wooden_sword");
+    public static Item poison_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.POISON, "poison_stone_sword");
+    public static Item poison_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.POISON, "poison_iron_sword");
+    public static Item poison_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.POISON, "poison_golden_sword");
+    public static Item poison_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.POISON, "poison_diamond_sword");
+
+    public static Item poisonII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.POISON, 1, "poisonII_wooden_sword");
+    public static Item poisonII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.POISON, 1, "poisonII_stone_sword");
+    public static Item poisonII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.POISON, 1, "poisonII_iron_sword");
+    public static Item poisonII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.POISON, 1, "poisonII_golden_sword");
+    public static Item poisonII_diamond_swordd = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.POISON, 1, "poisonII_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Poison Items");

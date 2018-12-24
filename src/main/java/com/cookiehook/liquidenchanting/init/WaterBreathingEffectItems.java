@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class WaterBreathingEffectItems {
@@ -32,11 +34,11 @@ public class WaterBreathingEffectItems {
     public static Item waterBreathing_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.WATER_BREATHING, "waterBreathing_diamond_leggings");
     public static Item waterBreathing_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.WATER_BREATHING, "waterBreathing_diamond_boots");
 
-//    public static Item waterBreathing_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.WATER_BREATHING, "waterBreathing_wooden_sword");
-//    public static Item waterBreathing_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.WATER_BREATHING, "waterBreathing_stone_sword");
-//    public static Item waterBreathing_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.WATER_BREATHING, "waterBreathing_iron_sword");
-//    public static Item waterBreathing_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.WATER_BREATHING, "waterBreathing_golden_sword");
-//    public static Item waterBreathing_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.WATER_BREATHING, "waterBreathing_diamond_sword");
+    public static Item waterBreathing_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.WATER_BREATHING, "waterBreathing_wooden_sword");
+    public static Item waterBreathing_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.WATER_BREATHING, "waterBreathing_stone_sword");
+    public static Item waterBreathing_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.WATER_BREATHING, "waterBreathing_iron_sword");
+    public static Item waterBreathing_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.WATER_BREATHING, "waterBreathing_golden_sword");
+    public static Item waterBreathing_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.WATER_BREATHING, "waterBreathing_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Water Breathing Items");

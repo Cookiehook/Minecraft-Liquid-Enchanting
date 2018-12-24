@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class JumpBoostEffectItems {
@@ -52,17 +54,17 @@ public class JumpBoostEffectItems {
     public static Item jumpBoostII_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.JUMP_BOOST, 1, "jumpBoostII_diamond_leggings");
     public static Item jumpBoostII_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.JUMP_BOOST, 1, "jumpBoostII_diamond_boots");
 
-//    public static Item jumpBoost_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.JUMP_BOOST, "jumpBoost_wooden_sword");
-//    public static Item jumpBoost_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.JUMP_BOOST, "jumpBoost_stone_sword");
-//    public static Item jumpBoost_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.JUMP_BOOST, "jumpBoost_iron_sword");
-//    public static Item jumpBoost_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.JUMP_BOOST, "jumpBoost_golden_sword");
-//    public static Item jumpBoost_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.JUMP_BOOST, "jumpBoost_diamond_sword");
-//
-//    public static Item jumpBoostII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.JUMP_BOOST, 200, "jumpBoostII_wooden_sword");
-//    public static Item jumpBoostII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.JUMP_BOOST, 200, "jumpBoostII_stone_sword");
-//    public static Item jumpBoostII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.JUMP_BOOST, 200, "jumpBoostII_iron_sword");
-//    public static Item jumpBoostII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.JUMP_BOOST, 200, "jumpBoostII_golden_sword");
-//    public static Item jumpBoostII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.JUMP_BOOST, 200, "jumpBoostII_diamond_sword");
+    public static Item jumpBoost_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.JUMP_BOOST, "jumpBoost_wooden_sword");
+    public static Item jumpBoost_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.JUMP_BOOST, "jumpBoost_stone_sword");
+    public static Item jumpBoost_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.JUMP_BOOST, "jumpBoost_iron_sword");
+    public static Item jumpBoost_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.JUMP_BOOST, "jumpBoost_golden_sword");
+    public static Item jumpBoost_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.JUMP_BOOST, "jumpBoost_diamond_sword");
+
+    public static Item jumpBoostII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.JUMP_BOOST, 1, "jumpBoostII_wooden_sword");
+    public static Item jumpBoostII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.JUMP_BOOST, 1, "jumpBoostII_stone_sword");
+    public static Item jumpBoostII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.JUMP_BOOST, 1, "jumpBoostII_iron_sword");
+    public static Item jumpBoostII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.JUMP_BOOST, 1, "jumpBoostII_golden_sword");
+    public static Item jumpBoostII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.JUMP_BOOST, 1, "jumpBoostII_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Jump Boost Items");

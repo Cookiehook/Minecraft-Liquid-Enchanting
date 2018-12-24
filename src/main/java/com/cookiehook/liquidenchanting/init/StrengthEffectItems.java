@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class StrengthEffectItems {
@@ -52,17 +54,17 @@ public class StrengthEffectItems {
     public static Item strengthII_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.STRENGTH, 1, "strengthII_diamond_leggings");
     public static Item strengthII_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.STRENGTH, 1, "strengthII_diamond_boots");
 
-//    public static Item strength_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.STRENGTH, "strength_wooden_sword");
-//    public static Item strength_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.STRENGTH, "strength_stone_sword");
-//    public static Item strength_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.STRENGTH, "strength_iron_sword");
-//    public static Item strength_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.STRENGTH, "strength_golden_sword");
-//    public static Item strength_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.STRENGTH, "strength_diamond_sword");
-//
-//    public static Item strengthII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.STRENGTH, 200, 1, "strengthII_wooden_sword");
-//    public static Item strengthII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.STRENGTH, 200, 1, "strengthII_stone_sword");
-//    public static Item strengthII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.STRENGTH, 200, 1, "strengthII_iron_sword");
-//    public static Item strengthII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.STRENGTH, 200, 1, "strengthII_golden_sword");
-//    public static Item strengthII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.STRENGTH, 200, 1, "strengthII_diamond_sword");
+    public static Item strength_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.STRENGTH, "strength_wooden_sword");
+    public static Item strength_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.STRENGTH, "strength_stone_sword");
+    public static Item strength_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.STRENGTH, "strength_iron_sword");
+    public static Item strength_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.STRENGTH, "strength_golden_sword");
+    public static Item strength_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.STRENGTH, "strength_diamond_sword");
+
+    public static Item strengthII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.STRENGTH, 1, "strengthII_wooden_sword");
+    public static Item strengthII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.STRENGTH, 1, "strengthII_stone_sword");
+    public static Item strengthII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.STRENGTH, 1, "strengthII_iron_sword");
+    public static Item strengthII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.STRENGTH, 1, "strengthII_golden_sword");
+    public static Item strengthII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.STRENGTH, 1, "strengthII_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Strength Items");

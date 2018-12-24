@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class WeaknessEffectItems {
@@ -32,11 +34,11 @@ public class WeaknessEffectItems {
     public static Item weakness_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.WEAKNESS, "weakness_diamond_leggings");
     public static Item weakness_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.WEAKNESS, "weakness_diamond_boots");
 
-//    public static Item weakness_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.WEAKNESS, "weakness_wooden_sword");
-//    public static Item weakness_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.WEAKNESS, "weakness_stone_sword");
-//    public static Item weakness_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.WEAKNESS, "weakness_iron_sword");
-//    public static Item weakness_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.WEAKNESS, "weakness_golden_sword");
-//    public static Item weakness_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.WEAKNESS, "weakness_diamond_sword");
+    public static Item weakness_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.WEAKNESS, "weakness_wooden_sword");
+    public static Item weakness_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.WEAKNESS, "weakness_stone_sword");
+    public static Item weakness_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.WEAKNESS, "weakness_iron_sword");
+    public static Item weakness_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.WEAKNESS, "weakness_golden_sword");
+    public static Item weakness_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.WEAKNESS, "weakness_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Weakness Items");

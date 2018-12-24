@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class SlownessEffectItems {
@@ -31,11 +33,11 @@ public class SlownessEffectItems {
     public static Item slowness_diamond_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.SLOWNESS, "slowness_diamond_leggings");
     public static Item slowness_diamond_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.SLOWNESS, "slowness_diamond_boots");
 
-//    public static Item slowness_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.SLOWNESS, "slowness_wooden_sword");
-//    public static Item slowness_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.SLOWNESS, "slowness_stone_sword");
-//    public static Item slowness_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.SLOWNESS, "slowness_iron_sword");
-//    public static Item slowness_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.SLOWNESS, "slowness_golden_sword");
-//    public static Item slowness_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.SLOWNESS, "slowness_diamond_sword");
+    public static Item slowness_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.SLOWNESS, "slowness_wooden_sword");
+    public static Item slowness_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.SLOWNESS, "slowness_stone_sword");
+    public static Item slowness_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.SLOWNESS, "slowness_iron_sword");
+    public static Item slowness_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.SLOWNESS, "slowness_golden_sword");
+    public static Item slowness_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.SLOWNESS, "slowness_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Slowness Items");

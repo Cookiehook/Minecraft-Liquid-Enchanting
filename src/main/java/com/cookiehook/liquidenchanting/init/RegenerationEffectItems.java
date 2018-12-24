@@ -2,10 +2,12 @@ package com.cookiehook.liquidenchanting.init;
 
 import com.cookiehook.liquidenchanting.items.ItemDecrementingPotionArmor;
 
+import com.cookiehook.liquidenchanting.items.ItemPotionSword;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import org.apache.logging.log4j.Logger;
 
 public class RegenerationEffectItems {
@@ -52,17 +54,17 @@ public class RegenerationEffectItems {
     public static Item regenerationII_diamond_leggings = new ItemDecrementingPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, MobEffects.REGENERATION, 1, "regenerationII_diamond_leggings");
     public static Item regenerationII_diamond_boots = new ItemDecrementingPotionArmor(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, MobEffects.REGENERATION, 1, "regenerationII_diamond_boots");
 
-//    public static Item regeneration_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.REGENERATION, "regeneration_wooden_sword");
-//    public static Item regeneration_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.REGENERATION, "regeneration_stone_sword");
-//    public static Item regeneration_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.REGENERATION, "regeneration_iron_sword");
-//    public static Item regeneration_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.REGENERATION, "regeneration_golden_sword");
-//    public static Item regeneration_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.REGENERATION, "regeneration_diamond_sword");
-//
-//    public static Item regenerationII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.REGENERATION, 1, "regenerationII_wooden_sword");
-//    public static Item regenerationII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.REGENERATION, 1, "regenerationII_stone_sword");
-//    public static Item regenerationII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.REGENERATION, 1, "regenerationII_iron_sword");
-//    public static Item regenerationII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.REGENERATION, 1, "regenerationII_golden_sword");
-//    public static Item regenerationII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.REGENERATION, 1, "regenerationII_diamond_sword");
+    public static Item regeneration_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.REGENERATION, "regeneration_wooden_sword");
+    public static Item regeneration_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.REGENERATION, "regeneration_stone_sword");
+    public static Item regeneration_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.REGENERATION, "regeneration_iron_sword");
+    public static Item regeneration_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.REGENERATION, "regeneration_golden_sword");
+    public static Item regeneration_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.REGENERATION, "regeneration_diamond_sword");
+
+    public static Item regenerationII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.REGENERATION, 1, "regenerationII_wooden_sword");
+    public static Item regenerationII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.REGENERATION, 1, "regenerationII_stone_sword");
+    public static Item regenerationII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.REGENERATION, 1, "regenerationII_iron_sword");
+    public static Item regenerationII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.REGENERATION, 1, "regenerationII_golden_sword");
+    public static Item regenerationII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.REGENERATION, 1, "regenerationII_diamond_sword");
 
     public static void init(Logger logger) {
         logger.info("Initialising: Regeneration Items");
