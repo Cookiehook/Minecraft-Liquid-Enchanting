@@ -1,6 +1,6 @@
 package com.cookiehook.liquidenchanting.util;
 
-import com.cookiehook.liquidenchanting.items.ItemPotionArmor;
+import com.cookiehook.liquidenchanting.init.ModItems;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -60,7 +60,6 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
                 NBTTagCompound enchant = centreItemStack.getTagCompound();
                 output.setTagCompound(enchant);
             }
-
             return output;
         }
 
@@ -104,19 +103,17 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
          */
         private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
             String potionName = potionTag.getTag("Potion").toString().split(":")[1].replace("\"", "");
-            String dictionaryKey;
+            String dictionaryKey = "";
 
             if(item instanceof ItemArmor) {
                 String materialName = ((ItemArmor)item).getArmorMaterial().getName();
                 String slotName = ((ItemArmor)item).getEquipmentSlot().getName();
                 dictionaryKey = materialName + slotName + potionName;
-            } else {
-                dictionaryKey = "";
+            } else if(item instanceof ItemSword){
+                String materialName = ((ItemSword)item).getToolMaterialName();
+                dictionaryKey = materialName + potionName;
             }
-            return ItemPotionArmor.effectMap.get(dictionaryKey);
+            return ModItems.effectMap.get(dictionaryKey);
         }
-
-
-
     }
 }

@@ -26,7 +26,6 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
     protected Potion potion;
     protected int duration, amplifier;
-    public static Map<String, Item> effectMap = new HashMap<String, Item>();
 
     public ItemPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name) {
         this(material, armorType, potion, 10, 0, name);
@@ -44,15 +43,13 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         this.amplifier = amplifier;
         setUnlocalizedName(name);
         setRegistryName(name);
-
         setCreativeTab(CreativeTabs.COMBAT);
-        ModItems.ITEMS.add(this);
 
         String materialName = material.getName();
         String slotName = armorType.getName();
         String potionName = getPotionName();
-        effectMap.put(materialName + slotName + potionName, this);
-
+        ModItems.effectMap.put(materialName + slotName + potionName, this);
+        ModItems.ITEMS.add(this);
     }
 
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {

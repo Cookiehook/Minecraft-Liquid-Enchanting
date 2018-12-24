@@ -7,7 +7,9 @@ import net.minecraft.item.Item;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -18,11 +20,14 @@ import org.apache.logging.log4j.Logger;
 public class ModItems {
 
     public static final List<Item> ITEMS = new ArrayList<Item>();
+    public static Map<String, Item> effectMap = new HashMap<String, Item>();
     public static final Item liquid_enchanting = new ItemBase("liquid_enchanting");
 
     public static void initialiseItems(Logger logger) {
-        InvisibilityEffectItems.init(logger);
         FireResistanceEffectItems.init(logger);
+        HarmingEffectItems.init(logger);
+        HealingEffectItems.init(logger);
+        InvisibilityEffectItems.init(logger);
         JumpBoostEffectItems.init(logger);
         NightVisionEffectItems.init(logger);
         PoisonEffectItems.init(logger);
