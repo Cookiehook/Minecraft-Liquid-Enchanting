@@ -8,7 +8,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -17,10 +16,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+
 import javax.annotation.Nullable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
@@ -45,7 +43,7 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         setRegistryName(name);
         setCreativeTab(CreativeTabs.COMBAT);
 
-        String materialName = material.getName();
+        String materialName = ModItems.getMaterialName(material);
         String slotName = armorType.getName();
         String potionName = getPotionName();
         ModItems.effectMap.put(materialName + slotName + potionName, this);

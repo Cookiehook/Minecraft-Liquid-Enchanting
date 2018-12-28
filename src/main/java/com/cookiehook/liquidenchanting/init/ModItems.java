@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -13,9 +14,11 @@ import java.util.Map;
 
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.Sys;
 
 public class ModItems {
 
@@ -40,10 +43,32 @@ public class ModItems {
     }
 
     public static void registerColors() {
-        for (Item item : ITEMS) {
-            registerColor(item);
+        FMLCommonHandler handler = FMLCommonHandler.instance();
+        Side side = handler.getSide();
+        if (side.equals(Side.CLIENT)) {
+            for (Item item : ITEMS) {
+                registerColor(item);
+            }
+        } else {
+            System.out.println("Not running on client, skipping colour registration");
         }
 
+    }
+
+    public static String getMaterialName(ItemArmor.ArmorMaterial material) {
+        String materialName = null;
+        try {
+            Field materialField = material.getClass().getDeclaredField("name");
+            materialField.setAccessible(true);
+            materialName = (String) materialField.get(material);
+        } catch (NoSuchFieldException nsfe) {
+            System.out.println("A wild NoSuchFieldException was found!");
+            System.out.println(nsfe.getLocalizedMessage());
+        } catch (IllegalAccessException iae) {
+            System.out.println("A wild IllegalAccessException was found!");
+            System.out.println(iae.getLocalizedMessage());
+        }
+        return materialName;
     }
 
     // Registers the overlay color for leather armor on the item sprites.
