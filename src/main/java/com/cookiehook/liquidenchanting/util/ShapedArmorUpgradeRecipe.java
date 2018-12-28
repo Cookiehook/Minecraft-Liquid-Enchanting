@@ -107,7 +107,7 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
 
             if(item instanceof ItemArmor) {
                 String materialName = ModItems.getMaterialName(((ItemArmor)item).getArmorMaterial());
-                String slotName = ((ItemArmor)item).getEquipmentSlot().getName();
+                String slotName = ModItems.getEquipmentSlot((ItemArmor)item).getName();
                 dictionaryKey = materialName + slotName + potionName;
             } else if(item instanceof ItemSword){
                 String materialName = ((ItemSword)item).getToolMaterialName();

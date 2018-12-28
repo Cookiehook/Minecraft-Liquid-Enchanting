@@ -3,6 +3,7 @@ package com.cookiehook.liquidenchanting.init;
 import com.cookiehook.liquidenchanting.items.ItemBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 
 import java.lang.reflect.Field;
@@ -18,7 +19,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.Sys;
 
 public class ModItems {
 
@@ -70,6 +70,24 @@ public class ModItems {
         }
         return materialName;
     }
+
+    public static EntityEquipmentSlot getEquipmentSlot(ItemArmor armor) {
+        EntityEquipmentSlot equipmentSlot = null;
+        try {
+            Field slotField = armor.getClass().getDeclaredField("armorType");
+            slotField.setAccessible(true);
+            equipmentSlot = (EntityEquipmentSlot) slotField.get(armor);
+        } catch (NoSuchFieldException nsfe) {
+            System.out.println("A wild NoSuchFieldException was found!");
+            System.out.println(nsfe.getLocalizedMessage());
+        } catch (IllegalAccessException iae) {
+            System.out.println("A wild IllegalAccessException was found!");
+            System.out.println(iae.getLocalizedMessage());
+        }
+
+        return equipmentSlot;
+    }
+
 
     // Registers the overlay color for leather armor on the item sprites.
     // If omitted, the items always show a white color, regardless of dyes.
