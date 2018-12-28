@@ -22,6 +22,6 @@ public class HarmingEffectItems {
     public static Item harmingII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_diamond_sword");
 
     public static void init(Logger logger) {
-        System.out.println("Initialising: Harming Items");
+        logger.info("Initialising: Harming Items");
     }
 }

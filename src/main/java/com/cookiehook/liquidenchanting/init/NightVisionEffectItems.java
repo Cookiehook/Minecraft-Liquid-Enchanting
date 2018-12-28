@@ -12,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 
 public class NightVisionEffectItems {
 
+    // Night vision starts to flicker when the timer runs below 10 seconds.
+    // Duration of 210 ticks (10.5s) has been chosen to give clear night vision when worn.
+
     public static Item nightVision_leather_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.HEAD, MobEffects.NIGHT_VISION, 210, 0, "nightVision_leather_helmet");
     public static Item nightVision_leather_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.CHEST, MobEffects.NIGHT_VISION, 210, 0, "nightVision_leather_chestplate");
     public static Item nightVision_leather_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.LEGS, MobEffects.NIGHT_VISION, 210, 0, "nightVision_leather_leggings");

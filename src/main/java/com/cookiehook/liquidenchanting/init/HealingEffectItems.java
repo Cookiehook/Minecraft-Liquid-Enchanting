@@ -22,6 +22,6 @@ public class HealingEffectItems {
     public static Item healingII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INSTANT_HEALTH, 1, 1, "healingII_diamond_sword");
 
     public static void init(Logger logger) {
-        System.out.println("Initialising: Healing Items");
+        logger.info("Initialising: Healing Items");
     }
 }

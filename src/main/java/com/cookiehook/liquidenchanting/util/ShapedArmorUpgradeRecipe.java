@@ -51,6 +51,7 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
             NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
             ItemStack output = new ItemStack(getModItemFromDictionary(targetPotion, centreItemStack.getItem()));
 
+            // Check that we have an item in the centre slot and it is the correct item type, protects against NullPointerExceptions.
             if (centreItemStack != null && (centreItemStack.getItem() instanceof ItemArmor || centreItemStack.getItem() instanceof ItemSword)) {
                 // Calculate incoming item's damage value, adding it to the output.
                 int newDamage = MathHelper.clamp(centreItemStack.getItemDamage(), 0, output.getMaxDamage());
@@ -63,6 +64,11 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
             return output;
         }
 
+        /**
+         * This is called by the vanilla crafting mechanics to determine whether the ingredients in the crafting table
+         * match any given recipe. Returning false means the ingredients weren't a match, true means they were.
+         * If true is returned, then getCraftingResult can be called to determine what item will be crafted.
+         */
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
             //First, call the standard check for ingredient matching. (All the right items in all the right places)
             boolean itemsMatch = super.checkMatch(inventory, startX, startY, mirror);
@@ -74,7 +80,7 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
                 if (targetPotion == null) {
                     return false;
                 } else {
-                    for (int i = 0; i < inventory.getSizeInventory(); ++i) {
+                    for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
                         if (i == 4) {
                             continue; //Skip the central slot, as it will be armor / sword.
                         }
@@ -96,6 +102,9 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
         }
 
         /**
+         * Using the unique combination of material armor slot and potion effect, looks for the corresponding liquidEnchanting
+         * item in the effectMap dictionary. This dictionary is populated in the same way on item registration, so we have a way
+         * to tie registered items to crafting recipes, without having to specify the potion type.
          *
          * @param potionTag NBT Tag Compound from the potion, used to get potion name.
          * @param item Vanilla armor / sword used in crafting recipe, used to get material and armor slot.

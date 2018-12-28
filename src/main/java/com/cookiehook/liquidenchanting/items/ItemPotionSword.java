@@ -19,6 +19,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
+/**
+ * This class represents a Sword item that inflicts the target with a potion effect when hit.
+ * This is achieved by overriding the hitEntity method in Item and adding a PotionEffect to the target entity.
+ *
+ * Default of 10 seconds is selected as a reasonable weapon buff for most effects.
+ */
 public class ItemPotionSword extends ItemSword implements IHasModel {
 
     private Potion potion;
@@ -43,20 +49,25 @@ public class ItemPotionSword extends ItemSword implements IHasModel {
         setRegistryName(name);
 
         String materialName = this.getToolMaterialName();
-        String potionName = getPotionName();
+        String potionName = ModItems.getPotionName(potion, amplifier);
         ModItems.ITEMS.add(this);
         ModItems.effectMap.put(materialName + potionName, this);
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
         hitEntity.addPotionEffect(new PotionEffect(potion, duration, amplifier));
-        return true;
+        return super.hitEntity(stack, hitEntity, attackingEntity); //Call the method from Item to make sure we damage the item on use.
     }
 
+    // Overridden method from Item. Adds the shiny "Enchanted" effect to the item.
     public boolean hasEffect(ItemStack itemstack) {
         return true;
     }
 
+    /**
+     * The addInformation method is a method in Item allowing tooltips to be added to the player's inventory.
+     * I'm using it here to add the name and strength of the potion appliied to the current item.
+     */
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         String potionName = I18n.format(potion.getName());
@@ -70,23 +81,5 @@ public class ItemPotionSword extends ItemSword implements IHasModel {
     public void registerModels()
     {
         Main.proxy.registerItemRenderer(this, 0, "inventory");
-    }
-
-    private String getPotionName() {
-        String potionName = potion.getRegistryName().toString().split(":")[1];
-        if (potionName.equals("jump_boost"))
-            potionName = "leaping";
-        else if(potionName.equals("speed"))
-            potionName = "swiftness";
-        else if (potionName.equals("instant_damage"))
-            potionName = "harming";
-        else if (potionName.equals("instant_health"))
-            potionName = "healing";
-
-        if(amplifier == 1)
-            potionName = "strong_" + potionName;
-
-        return potionName;
-
     }
 }

@@ -20,6 +20,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * This class represents an Armor item, that adds a potion effect to the player when worn.
+ * This is achieved by overriding the vanilla onArmorTick (called every server tick, or 20x a second) to add the given
+ * potion effect to the player wearing the armor.
+ *
+ * A default duration of 10 ticks (0.5s) has been chosen to prevent de-syncs between client and server. If we only add 1 tick of
+ * effect every tick, the server can think the player has an effect when the client doesn't. Odd behaviour ensues...
+ */
 public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
     protected Potion potion;
@@ -45,7 +53,7 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
 
         String materialName = ModItems.getMaterialName(material);
         String slotName = armorType.getName();
-        String potionName = getPotionName();
+        String potionName = ModItems.getPotionName(potion, amplifier);
         ModItems.effectMap.put(materialName + slotName + potionName, this);
         ModItems.ITEMS.add(this);
     }
@@ -54,10 +62,15 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         player.addPotionEffect(new PotionEffect(potion, duration, amplifier, false, false));
     }
 
+    // Overridden method from Item. Adds the shiny "Enchanted" effect to the item.
     public boolean hasEffect(ItemStack itemstack) {
         return true;
     }
 
+    /**
+     * The addInformation method is a method in Item allowing tooltips to be added to the player's inventory.
+     * I'm using it here to add the name and strength of the potion appliied to the current item.
+     */
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         String potionName = I18n.format(potion.getName());
@@ -72,22 +85,6 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         Main.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
-    /**
-     * Converts the name of the input potion to the name from the potion item's NBT tag.
-     * Necessary to handle inconsistency between MobEffect and NBT naming.
-     * @return Name of potion
-     */
-    private String getPotionName() {
-        String potionName = potion.getRegistryName().toString().split(":")[1];
-        if (potionName.equals("jump_boost"))
-            potionName = "leaping";
-        else if(potionName.equals("speed"))
-            potionName = "swiftness";
 
-        if(amplifier == 1)
-            potionName = "strong_" + potionName;
 
-        return potionName;
-
-    }
 }

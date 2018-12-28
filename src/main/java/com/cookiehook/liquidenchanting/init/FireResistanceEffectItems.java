@@ -39,6 +39,6 @@ public class FireResistanceEffectItems {
     public static Item fireResistance_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.FIRE_RESISTANCE, "fireResistance_diamond_sword");
 
     public static void init(Logger logger) {
-        System.out.println("Initialising: Fire Resistance Items");
+        logger.info("Initialising: Fire Resistance Items");
     }
 }

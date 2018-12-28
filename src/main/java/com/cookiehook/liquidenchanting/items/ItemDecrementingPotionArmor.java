@@ -8,6 +8,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
+/**
+ * Armors that increment/decrement health do so by relying on the timer counting down.
+ * This child class adds these potion effects for 10 seconds, then replenishes the effect once it's counted
+ * down to allow the potions to take proper effect.
+ */
 public class ItemDecrementingPotionArmor extends ItemPotionArmor {
 
     public ItemDecrementingPotionArmor(ArmorMaterial material, EntityEquipmentSlot armorType, Potion potion, String name) {
@@ -19,7 +24,7 @@ public class ItemDecrementingPotionArmor extends ItemPotionArmor {
         super(material, armorType, potion, 200, amplifier, name);
     }
 
-    // Potions that effect health rely on the counter ticking down. This method lets potions count down and give their effect.
+
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
         if (!player.isPotionActive(potion))
