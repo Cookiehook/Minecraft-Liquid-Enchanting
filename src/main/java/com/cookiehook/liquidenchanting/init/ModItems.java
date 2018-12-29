@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 
 public class ModItems {
@@ -138,6 +139,7 @@ public class ModItems {
      * Has no effect on shading of the armor rendered on the player, that is handled elsewhere.
      * @param item
      */
+    @SideOnly(Side.CLIENT)
     private static void registerColor(Item item) {
         if (item instanceof ItemArmor) {
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
