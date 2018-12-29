@@ -102,6 +102,7 @@ public class ModItems {
             materialName = (String) materialField.get(material);
         } catch (NoSuchFieldException nsfe) {
             System.out.println("A wild NoSuchFieldException appears!");
+            nsfe.printStackTrace();
             System.out.println(nsfe.getLocalizedMessage());
         } catch (IllegalAccessException iae) {
             System.out.println("A wild IllegalAccessException appears!");
@@ -125,9 +126,11 @@ public class ModItems {
             equipmentSlot = (EntityEquipmentSlot) slotField.get(armor);
         } catch (NoSuchFieldException nsfe) {
             System.out.println("A wild NoSuchFieldException appears!");
+            nsfe.printStackTrace();
             System.out.println(nsfe.getLocalizedMessage());
         } catch (IllegalAccessException iae) {
             System.out.println("A wild IllegalAccessException appears!");
+            iae.printStackTrace();
             System.out.println(iae.getLocalizedMessage());
         }
         return equipmentSlot;
