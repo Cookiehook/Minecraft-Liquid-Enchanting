@@ -23,6 +23,7 @@ public class ModItems {
         FireResistanceEffectItems.registerItems();
         HarmingEffectItems.registerItems();
         HasteEffectItems.registerItems();
+        HealingEffectItems.registerItems();
     }
 
     /**

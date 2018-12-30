@@ -92,3 +92,15 @@ item.strong_haste_stone_sword.name=Stone Sword
 item.strong_haste_iron_sword.name=Iron Sword
 item.strong_haste_golden_sword.name=Golden Sword
 item.strong_haste_diamond_sword.name=Diamond Sword
+
+item.healing_wooden_sword.name=Wooden Sword
+item.healing_stone_sword.name=Stone Sword
+item.healing_iron_sword.name=Iron Sword
+item.healing_golden_sword.name=Golden Sword
+item.healing_diamond_sword.name=Diamond Sword
+
+item.strong_healing_wooden_sword.name=Wooden Sword
+item.strong_healing_stone_sword.name=Stone Sword
+item.strong_healing_iron_sword.name=Iron Sword
+item.strong_healing_golden_sword.name=Golden Sword
+item.strong_healing_diamond_sword.name=Diamond Sword
