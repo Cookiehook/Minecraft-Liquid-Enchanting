@@ -1,0 +1,27 @@
+{
+  "type": "liquidenchanting:preserve_nbt",
+  "pattern": [
+    "BSB",
+    "BXB",
+    "BTB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "X": {
+      "item" : "minecraft:chainmail_leggings",
+      "data": 32767
+    },
+    "T": {
+      "item": "minecraft:iron_pickaxe"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:haste_chainmail_leggings",
+    "count": 1
+  }
+}

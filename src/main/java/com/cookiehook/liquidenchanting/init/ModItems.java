@@ -22,6 +22,7 @@ public class ModItems {
         itemList.add(new Item().setUnlocalizedName("liquid_enchanting").setRegistryName("liquid_enchanting"));
         FireResistanceEffectItems.registerItems();
         HarmingEffectItems.registerItems();
+        HasteEffectItems.registerItems();
     }
 
     /**

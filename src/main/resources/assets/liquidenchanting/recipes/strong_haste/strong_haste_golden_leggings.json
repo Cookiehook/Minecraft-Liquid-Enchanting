@@ -1,0 +1,27 @@
+{
+  "type": "liquidenchanting:preserve_nbt",
+  "pattern": [
+    "BSB",
+    "BXB",
+    "BTB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:diamond_block"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "X": {
+      "item" : "minecraft:golden_leggings",
+      "data": 32767
+    },
+    "T": {
+      "item": "minecraft:diamond_pickaxe"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:strong_haste_golden_leggings",
+    "count": 1
+  }
+}
