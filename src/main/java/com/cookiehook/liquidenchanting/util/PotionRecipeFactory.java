@@ -19,22 +19,22 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import javax.annotation.Nonnull;
 
-public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
+public class PotionRecipeFactory implements IRecipeFactory {
     @Override
     public IRecipe parse(JsonContext context, JsonObject json) {
         ShapedOreRecipe recipe = ShapedOreRecipe.factory(context, json);
 
         CraftingHelper.ShapedPrimer primer = new CraftingHelper.ShapedPrimer();
-        primer.width = recipe.getWidth();
-        primer.height = recipe.getHeight();
+        primer.width = recipe.getRecipeWidth();
+        primer.height = recipe.getRecipeHeight();
         primer.mirrored = JsonUtils.getBoolean(json, "mirrored", true);
         primer.input = recipe.getIngredients();
-        return new CopyNBTRecipe(new ResourceLocation(Reference.MOD_ID, "copy_nbt_crafting"), recipe.getRecipeOutput(), primer);
+        return new PotionImbewRecipe(new ResourceLocation(Reference.MOD_ID, "potion_imbew_crafting"), recipe.getRecipeOutput(), primer);
     }
 
-    public static class CopyNBTRecipe extends ShapedOreRecipe {
+    public static class PotionImbewRecipe extends ShapedOreRecipe {
 
-        public CopyNBTRecipe(ResourceLocation group, ItemStack result, CraftingHelper.ShapedPrimer primer) {
+        public PotionImbewRecipe(ResourceLocation group, ItemStack result, CraftingHelper.ShapedPrimer primer) {
             super(group, result, primer);
         }
 

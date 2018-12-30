@@ -1,5 +1,5 @@
 {
-  "type": "liquidenchanting:copy_nbt",
+  "type": "liquidenchanting:potion_imbew",
   "pattern": [
     "PPP",
     "PHP",
