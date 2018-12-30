@@ -1,8 +1,6 @@
 package com.cookiehook.liquidenchanting.items;
 
-import com.cookiehook.liquidenchanting.Main;
 import com.cookiehook.liquidenchanting.init.ModItems;
-import com.cookiehook.liquidenchanting.util.IHasModel;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -24,11 +21,11 @@ import java.util.List;
  * This class represents an Armor item, that adds a potion effect to the player when worn.
  * This is achieved by overriding the vanilla onArmorTick (called every server tick, or 20x a second) to add the given
  * potion effect to the player wearing the armor.
- *
+ * <p>
  * A default duration of 10 ticks (0.5s) has been chosen to prevent de-syncs between client and server. If we only add 1 tick of
  * effect every tick, the server can think the player has an effect when the client doesn't. Odd behaviour ensues...
  */
-public class ItemPotionArmor extends ItemArmor implements IHasModel {
+public class ItemPotionArmor extends ItemArmor {
 
     protected Potion potion;
     protected int duration, amplifier;
@@ -51,11 +48,7 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
         setRegistryName(name);
         setCreativeTab(CreativeTabs.COMBAT);
 
-        String materialName = ModItems.getMaterialName(material);
-        String slotName = armorType.getName();
-        String potionName = ModItems.getPotionName(potion, amplifier);
-        ModItems.effectMap.put(materialName + slotName + potionName, this);
-        ModItems.ITEMS.add(this);
+        ModItems.effectMap.put(name, this);
     }
 
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
@@ -79,12 +72,4 @@ public class ItemPotionArmor extends ItemArmor implements IHasModel {
             level = "II";
         tooltip.add(potionName + " " + level);
     }
-
-    @Override
-    public void registerModels() {
-        Main.proxy.registerItemRenderer(this, 0, "inventory");
-    }
-
-
-
 }

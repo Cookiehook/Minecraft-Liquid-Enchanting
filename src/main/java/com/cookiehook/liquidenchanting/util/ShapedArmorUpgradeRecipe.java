@@ -102,26 +102,19 @@ public class ShapedArmorUpgradeRecipe implements IRecipeFactory {
         }
 
         /**
-         * Using the unique combination of material armor slot and potion effect, looks for the corresponding liquidEnchanting
+         * Using the unique combination of potion effect and vanilla item name, looks for the corresponding liquidEnchanting
          * item in the effectMap dictionary. This dictionary is populated in the same way on item registration, so we have a way
          * to tie registered items to crafting recipes, without having to specify the potion type.
          *
          * @param potionTag NBT Tag Compound from the potion, used to get potion name.
-         * @param item Vanilla armor / sword used in crafting recipe, used to get material and armor slot.
+         * @param item      Vanilla armor / sword used in crafting recipe, used to get material and armor slot.
          * @return Instance of mod armor / sword
          */
         private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
             String potionName = potionTag.getTag("Potion").toString().split(":")[1].replace("\"", "");
-            String dictionaryKey = "";
+            String registryName = item.getRegistryName().toString().split(":")[1];
+            String dictionaryKey = potionName + "_" + registryName;
 
-            if(item instanceof ItemArmor) {
-                String materialName = ModItems.getMaterialName(((ItemArmor)item).getArmorMaterial());
-                String slotName = ModItems.getEquipmentSlot((ItemArmor)item).getName();
-                dictionaryKey = materialName + slotName + potionName;
-            } else if(item instanceof ItemSword){
-                String materialName = ((ItemSword)item).getToolMaterialName();
-                dictionaryKey = materialName + potionName;
-            }
             return ModItems.effectMap.get(dictionaryKey);
         }
     }

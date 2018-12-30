@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class Main {
@@ -21,12 +20,12 @@ public class Main {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Logger logger = event.getModLog();
-        ModItems.initialiseItems(logger);
+        ModItems.registerItems();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        ModItems.registerColors();
+        proxy.registerItemColor();
     }
+
 }

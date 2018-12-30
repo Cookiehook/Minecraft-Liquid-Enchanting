@@ -2,10 +2,7 @@ package com.cookiehook.liquidenchanting.items;
 
 import java.util.List;
 
-import com.cookiehook.liquidenchanting.Main;
 import com.cookiehook.liquidenchanting.init.ModItems;
-
-import com.cookiehook.liquidenchanting.util.IHasModel;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,7 +22,7 @@ import javax.annotation.Nullable;
  *
  * Default of 10 seconds is selected as a reasonable weapon buff for most effects.
  */
-public class ItemPotionSword extends ItemSword implements IHasModel {
+public class ItemPotionSword extends ItemSword {
 
     private Potion potion;
     private int duration, amplifier;
@@ -48,10 +45,7 @@ public class ItemPotionSword extends ItemSword implements IHasModel {
         setUnlocalizedName(name);
         setRegistryName(name);
 
-        String materialName = this.getToolMaterialName();
-        String potionName = ModItems.getPotionName(potion, amplifier);
-        ModItems.ITEMS.add(this);
-        ModItems.effectMap.put(materialName + potionName, this);
+        ModItems.effectMap.put(name, this);
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
@@ -75,11 +69,5 @@ public class ItemPotionSword extends ItemSword implements IHasModel {
         if (amplifier == 1)
             level = "II";
         tooltip.add(potionName + " " + level);
-    }
-
-    @Override
-    public void registerModels()
-    {
-        Main.proxy.registerItemRenderer(this, 0, "inventory");
     }
 }
