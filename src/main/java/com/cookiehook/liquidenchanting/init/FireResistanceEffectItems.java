@@ -7,9 +7,9 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
 
-class FireResistanceItems {
+class FireResistanceEffectItems {
 
-    static void registerFireResistanceItems() {
+    static void registerItems() {
         ModItems.itemList.add(new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.HEAD, MobEffects.FIRE_RESISTANCE, "fire_resistance_leather_helmet"));
         ModItems.itemList.add(new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.CHEST, MobEffects.FIRE_RESISTANCE, "fire_resistance_leather_chestplate"));
         ModItems.itemList.add(new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, EntityEquipmentSlot.LEGS, MobEffects.FIRE_RESISTANCE, "fire_resistance_leather_leggings"));
