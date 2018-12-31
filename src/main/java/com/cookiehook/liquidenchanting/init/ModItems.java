@@ -33,11 +33,13 @@ public class ModItems {
         SlownessEffectItems.registerItems();
         SpeedEffectItems.registerItems();
         StrengthEffectItems.registerItems();
+        WaterBreathingEffectItems.registerItems();
+        WeaknessEffectItems.registerItems();
     }
 
     /**
      * Registers an IItemColor for each item, so that dyed armors have properly shaded item sprites.
-     * Has no effect on shading of the armor rendered on the player, that is handled elsewhere.
+     * Has no effect on shading of the armor rendered on the player, that is handled by the ArmorMaterial.
      * @param item - Item to be registered
      */
     @SideOnly(Side.CLIENT)
