@@ -1,0 +1,27 @@
+{
+  "type": "liquidenchanting:preserve_nbt",
+  "pattern": [
+    "BSB",
+    "BXB",
+    "BTB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "X": {
+      "item" : "minecraft:leather_leggings",
+      "data": 32767
+    },
+    "T": {
+      "item": "minecraft:iron_chestplate"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:resistance_leather_leggings",
+    "count": 1
+  }
+}

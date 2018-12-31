@@ -29,6 +29,7 @@ public class ModItems {
         NightVisionEffectItems.registerItems();
         PoisonEffectItems.registerItems();
         RegenerationEffectItems.registerItems();
+        ResistanceEffectItems.registerItems();
     }
 
     /**
