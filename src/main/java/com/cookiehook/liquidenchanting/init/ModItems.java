@@ -30,6 +30,8 @@ public class ModItems {
         PoisonEffectItems.registerItems();
         RegenerationEffectItems.registerItems();
         ResistanceEffectItems.registerItems();
+        SlownessEffectItems.registerItems();
+        SpeedEffectItems.registerItems();
     }
 
     /**
