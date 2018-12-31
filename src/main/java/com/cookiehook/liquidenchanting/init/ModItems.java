@@ -27,6 +27,7 @@ public class ModItems {
         InvisibilityEffectItems.registerItems();
         JumpBoostResistanceEffectItems.registerItems();
         NightVisionEffectItems.registerItems();
+        PoisonEffectItems.registerItems();
     }
 
     /**
