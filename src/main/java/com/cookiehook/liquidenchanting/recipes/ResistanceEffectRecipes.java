@@ -53,22 +53,22 @@ public class ResistanceEffectRecipes {
 				"ACA",
 				"AAA",
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chain_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chainmail_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chain_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chainmail_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chain_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chainmail_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chain_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistance_chainmail_boots,
 				"ABA",
 				"ACA",
 				"AAA",
@@ -115,102 +115,102 @@ public class ResistanceEffectRecipes {
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_boots, 1, OreDictionary.WILDCARD_VALUE)));
  		
  		//ResistanceII Armor
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_leather_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_leather_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_leather_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_leather_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_leather_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_leather_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_leather_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_leather_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_iron_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_iron_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_iron_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_iron_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_iron_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_iron_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_iron_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_iron_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_chain_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_chainmail_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_chain_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_chainmail_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_chain_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_chainmail_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_chain_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_chainmail_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_golden_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_golden_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_golden_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_golden_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_golden_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_golden_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_golden_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_golden_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_diamond_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_diamond_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_diamond_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_diamond_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_diamond_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_diamond_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_diamond_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_diamond_boots,
 				"ABA",
 				"ACA",
 				"AAA",
@@ -246,27 +246,27 @@ public class ResistanceEffectRecipes {
 				'A', Blocks.iron_block, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_sword, 1, OreDictionary.WILDCARD_VALUE)));
 		
 		//ResistanceII Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_wooden_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_wooden_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.wooden_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_stone_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_stone_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.stone_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_iron_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_iron_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_golden_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_golden_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Blocks.diamond_block, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.resistanceII_diamond_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(ResistanceEffectItems.strong_resistance_diamond_sword,
 				"ABA",
 				"ACA",
 				"AAA",

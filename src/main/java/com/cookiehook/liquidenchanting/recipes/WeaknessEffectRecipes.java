@@ -32,22 +32,22 @@ public class WeaknessEffectRecipes {
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8200), 'B', new ItemStack(Items.leather_boots, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chain_helmet,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chainmail_helmet,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8200), 'B', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chain_chestplate,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chainmail_chestplate,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8200), 'B', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chain_leggings,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chainmail_leggings,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8200), 'B', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chain_boots,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(WeaknessEffectItems.weakness_chainmail_boots,
 				"AAA",
 				"ABA",
 				"AAA",

@@ -52,22 +52,22 @@ public class HasteEffectRecipes {
 				"ACA",
 				"AAA",
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chain_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chainmail_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chain_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chainmail_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chain_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chainmail_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chain_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.haste_chainmail_boots,
 				"ABA",
 				"ACA",
 				"AAA",
@@ -114,102 +114,102 @@ public class HasteEffectRecipes {
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_boots, 1, OreDictionary.WILDCARD_VALUE)));
  		
  		//HasteII Armor
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_leather_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_leather_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_leather_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_leather_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_leather_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_leather_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_leather_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_leather_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.leather_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_iron_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_iron_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_iron_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_iron_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_iron_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_iron_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_iron_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_iron_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_chain_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_chainmail_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_chain_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_chainmail_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_chain_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_chainmail_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_chain_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_chainmail_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.chainmail_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_golden_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_golden_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_golden_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_golden_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_golden_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_golden_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_golden_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_golden_boots,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_boots, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_diamond_helmet,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_diamond_helmet,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_helmet, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_diamond_chestplate,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_diamond_chestplate,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_diamond_leggings,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_diamond_leggings,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_leggings, 1, OreDictionary.WILDCARD_VALUE)));
- 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_diamond_boots,
+ 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_diamond_boots,
 				"ABA",
 				"ACA",
 				"AAA",
@@ -245,27 +245,27 @@ public class HasteEffectRecipes {
 				'A', Items.iron_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.diamond_sword, 1, OreDictionary.WILDCARD_VALUE)));
 		
 		//HasteII Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_wooden_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_wooden_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.wooden_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_stone_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_stone_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.stone_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_iron_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_iron_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.iron_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_golden_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_golden_sword,
 				"ABA",
 				"ACA",
 				"AAA",
 				'A', Items.diamond_pickaxe, 'B', Items.nether_star, 'C', new ItemStack(Items.golden_sword, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.hasteII_diamond_sword,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HasteEffectItems.strong_haste_diamond_sword,
 				"ABA",
 				"ACA",
 				"AAA",

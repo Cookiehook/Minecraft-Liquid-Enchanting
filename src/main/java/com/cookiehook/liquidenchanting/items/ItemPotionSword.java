@@ -28,7 +28,7 @@ public class ItemPotionSword extends ItemSword{
 	/**
 	 * Creates a sword object, using the following parameters:
 	 * @param material - The ToolMaterial needed. This sets properties such as efficiency, durability reduction etc.
-	 * @param potionEffect - A PotionEffect object, which will be added to the hit entity.
+	 * @param potion - A Potion object, which will be added to the hit entity.
 	 */
 	public ItemPotionSword(ToolMaterial material, Potion potion, int duration, int amplifier) {
 		//Passes the toolMaterial parameter to the ItemSword constructor, which actually does the work.
@@ -44,7 +44,7 @@ public class ItemPotionSword extends ItemSword{
 	//Adds the potion effect to any entity hit by the sword.
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
 		hitEntity.addPotionEffect(new PotionEffect(potion.id, duration, amplifier));
-		return true;
+		return super.hitEntity(stack, hitEntity, attackingEntity);
 	}
 	
 	//Gives the "enchanted" animation.

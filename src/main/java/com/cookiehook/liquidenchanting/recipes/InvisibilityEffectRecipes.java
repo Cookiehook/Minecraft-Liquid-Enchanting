@@ -32,22 +32,22 @@ public class InvisibilityEffectRecipes {
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8206), 'B', new ItemStack(Items.leather_boots, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_helmet,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_helmet,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8206), 'B', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_chestplate,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_chestplate,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8206), 'B', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_leggings,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_leggings,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8206), 'B', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_boots,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_boots,
 				"AAA",
 				"ABA",
 				"AAA",
