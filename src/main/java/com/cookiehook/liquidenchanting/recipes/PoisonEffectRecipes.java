@@ -13,7 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class PoisonEffectRecipes {
 
 	public static ItemStack poisonPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.POISON);
-	public static ItemStack poisonIIPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_POISON);
+	public static ItemStack strong_poisonPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_POISON);
 
 	public static void addArmorRecipes() {
 
@@ -26,13 +26,13 @@ public class PoisonEffectRecipes {
 				new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_leather_boots, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.LEATHER_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chain_helmet, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chainmail_helmet, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chain_chestplate, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chainmail_chestplate, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chain_leggings, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chainmail_leggings, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chain_boots, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_chainmail_boots, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poison_iron_helmet, "AAA", "ABA", "AAA", 'A', poisonPotion, 'B',
 				new ItemStack(Items.IRON_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
@@ -60,45 +60,45 @@ public class PoisonEffectRecipes {
 				new ItemStack(Items.DIAMOND_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
 
 		// Poison II Armor
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_leather_helmet, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_leather_helmet, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.LEATHER_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_leather_chestplate, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_leather_chestplate, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.LEATHER_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_leather_leggings, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_leather_leggings, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_leather_boots, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_leather_boots, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.LEATHER_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_chain_helmet, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_chainmail_helmet, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_chain_chestplate, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_chainmail_chestplate, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_chain_leggings, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_chainmail_leggings, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_chain_boots, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_chainmail_boots, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_iron_helmet, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_iron_helmet, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.IRON_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_iron_chestplate, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_iron_chestplate, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.IRON_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_iron_leggings, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_iron_leggings, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.IRON_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_iron_boots, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_iron_boots, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.IRON_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_golden_helmet, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_golden_helmet, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.GOLDEN_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_golden_chestplate, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_golden_chestplate, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.GOLDEN_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_golden_leggings, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_golden_leggings, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.GOLDEN_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_golden_boots, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_golden_boots, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.GOLDEN_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_diamond_helmet, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_diamond_helmet, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.DIAMOND_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_diamond_chestplate, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_diamond_chestplate, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.DIAMOND_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_diamond_leggings, "AAA", "ABA", "AAA", 'A', poisonIIPotion,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_diamond_leggings, "AAA", "ABA", "AAA", 'A', strong_poisonPotion,
 				'B', new ItemStack(Items.DIAMOND_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_diamond_boots, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_diamond_boots, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.DIAMOND_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
 	}
 
@@ -116,15 +116,15 @@ public class PoisonEffectRecipes {
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 
 		// Poison II Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_wooden_sword, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_wooden_sword, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.WOODEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_stone_sword, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_stone_sword, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.STONE_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_iron_sword, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_iron_sword, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.IRON_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_golden_sword, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_golden_sword, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.GOLDEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.poisonII_diamond_sword, "AAA", "ABA", "AAA", 'A', poisonIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(PoisonEffectItems.strong_poison_diamond_sword, "AAA", "ABA", "AAA", 'A', strong_poisonPotion, 'B',
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 	}
 }

@@ -37,7 +37,7 @@ public class ItemPotionSword extends ItemSword {
 	
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
 		hitEntity.addPotionEffect(new PotionEffect(potion, duration, amplifier));
-		return true;
+		return super.hitEntity(stack, hitEntity, attackingEntity);
 	}
 	
 	public boolean hasEffect(ItemStack itemstack) {

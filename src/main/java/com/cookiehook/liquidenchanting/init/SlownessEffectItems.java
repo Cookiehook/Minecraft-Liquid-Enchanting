@@ -15,10 +15,10 @@ public class SlownessEffectItems {
 	public static Item slowness_leather_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.CHEST, MobEffects.SLOWNESS, "slowness_leather_chestplate");
 	public static Item slowness_leather_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.LEGS, MobEffects.SLOWNESS, "slowness_leather_leggings");
 	public static Item slowness_leather_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.FEET, MobEffects.SLOWNESS, "slowness_leather_boots");
-	public static Item slowness_chain_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.HEAD, MobEffects.SLOWNESS, "slowness_chain_helmet");
-	public static Item slowness_chain_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.CHEST, MobEffects.SLOWNESS, "slowness_chain_chestplate");
-	public static Item slowness_chain_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.LEGS, MobEffects.SLOWNESS, "slowness_chain_leggings");
-	public static Item slowness_chain_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.FEET, MobEffects.SLOWNESS, "slowness_chain_boots");
+	public static Item slowness_chainmail_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.HEAD, MobEffects.SLOWNESS, "slowness_chainmail_helmet");
+	public static Item slowness_chainmail_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.CHEST, MobEffects.SLOWNESS, "slowness_chainmail_chestplate");
+	public static Item slowness_chainmail_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.LEGS, MobEffects.SLOWNESS, "slowness_chainmail_leggings");
+	public static Item slowness_chainmail_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.FEET, MobEffects.SLOWNESS, "slowness_chainmail_boots");
 	public static Item slowness_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.HEAD, MobEffects.SLOWNESS, "slowness_iron_helmet");
 	public static Item slowness_iron_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.CHEST, MobEffects.SLOWNESS, "slowness_iron_chestplate");
 	public static Item slowness_iron_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.LEGS, MobEffects.SLOWNESS, "slowness_iron_leggings");

@@ -15,10 +15,10 @@ public class InvisibilityEffectItems {
 	public static Item invisibility_leather_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.CHEST, MobEffects.INVISIBILITY, "invisibility_leather_chestplate");
 	public static Item invisibility_leather_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.LEGS, MobEffects.INVISIBILITY, "invisibility_leather_leggings");
 	public static Item invisibility_leather_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.FEET, MobEffects.INVISIBILITY, "invisibility_leather_boots");
-	public static Item invisibility_chain_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.HEAD, MobEffects.INVISIBILITY, "invisibility_chain_helmet");
-	public static Item invisibility_chain_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.CHEST, MobEffects.INVISIBILITY, "invisibility_chain_chestplate");
-	public static Item invisibility_chain_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.LEGS, MobEffects.INVISIBILITY, "invisibility_chain_leggings");
-	public static Item invisibility_chain_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.FEET, MobEffects.INVISIBILITY, "invisibility_chain_boots");
+	public static Item invisibility_chainmail_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.HEAD, MobEffects.INVISIBILITY, "invisibility_chainmail_helmet");
+	public static Item invisibility_chainmail_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.CHEST, MobEffects.INVISIBILITY, "invisibility_chainmail_chestplate");
+	public static Item invisibility_chainmail_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.LEGS, MobEffects.INVISIBILITY, "invisibility_chainmail_leggings");
+	public static Item invisibility_chainmail_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, EntityEquipmentSlot.FEET, MobEffects.INVISIBILITY, "invisibility_chainmail_boots");
 	public static Item invisibility_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.HEAD, MobEffects.INVISIBILITY, "invisibility_iron_helmet");
 	public static Item invisibility_iron_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.CHEST, MobEffects.INVISIBILITY, "invisibility_iron_chestplate");
 	public static Item invisibility_iron_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, EntityEquipmentSlot.LEGS, MobEffects.INVISIBILITY, "invisibility_iron_leggings");
