@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "liquidenchanting:strong_haste_armor_enabled",
+      "value": true
+    }
+  ],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
@@ -13,7 +19,7 @@
       "item": "minecraft:nether_star"
     },
     "X": {
-      "item" : "minecraft:golden_boots",
+      "item": "minecraft:golden_boots",
       "data": 32767
     },
     "T": {
