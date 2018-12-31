@@ -32,6 +32,7 @@ public class ModItems {
         ResistanceEffectItems.registerItems();
         SlownessEffectItems.registerItems();
         SpeedEffectItems.registerItems();
+        StrengthEffectItems.registerItems();
     }
 
     /**
