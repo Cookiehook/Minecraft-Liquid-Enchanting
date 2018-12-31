@@ -13,7 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class HarmingEffectRecipes {
 
 	public static ItemStack harmingPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.HARMING);
-	public static ItemStack harmingIIPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_HARMING);
+	public static ItemStack strong_harmingPotion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_HARMING);
 
 	public static void addSwordRecipes() {
 		// Harming Sword
@@ -29,15 +29,15 @@ public class HarmingEffectRecipes {
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 
 		// HarmingII Sword
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_wooden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.strong_harming_wooden_sword, "AAA", "ABA", "AAA", 'A', strong_harmingPotion, 'B',
 				new ItemStack(Items.WOODEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_stone_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.strong_harming_stone_sword, "AAA", "ABA", "AAA", 'A', strong_harmingPotion, 'B',
 				new ItemStack(Items.STONE_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_iron_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.strong_harming_iron_sword, "AAA", "ABA", "AAA", 'A', strong_harmingPotion, 'B',
 				new ItemStack(Items.IRON_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_golden_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.strong_harming_golden_sword, "AAA", "ABA", "AAA", 'A', strong_harmingPotion, 'B',
 				new ItemStack(Items.GOLDEN_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.harmingII_diamond_sword, "AAA", "ABA", "AAA", 'A', harmingIIPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(HarmingEffectItems.strong_harming_diamond_sword, "AAA", "ABA", "AAA", 'A', strong_harmingPotion, 'B',
 				new ItemStack(Items.DIAMOND_SWORD, 1, OreDictionary.WILDCARD_VALUE)));
 	}
 }
