@@ -18,10 +18,10 @@ public class SlownessEffectItems {
 	public static Item slowness_leather_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 1, Potion.moveSlowdown).setUnlocalizedName("slowness_leather_chestplate");
 	public static Item slowness_leather_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 2, Potion.moveSlowdown).setUnlocalizedName("slowness_leather_leggings");
 	public static Item slowness_leather_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 3, Potion.moveSlowdown).setUnlocalizedName("slowness_leather_boots");
-	public static Item slowness_chain_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 0, Potion.moveSlowdown).setUnlocalizedName("slowness_chain_helmet");
-	public static Item slowness_chain_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 1, Potion.moveSlowdown).setUnlocalizedName("slowness_chain_chestplate");
-	public static Item slowness_chain_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 2, Potion.moveSlowdown).setUnlocalizedName("slowness_chain_leggings");
-	public static Item slowness_chain_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 3, Potion.moveSlowdown).setUnlocalizedName("slowness_chain_boots");
+	public static Item slowness_chainmail_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 0, Potion.moveSlowdown).setUnlocalizedName("slowness_chainmail_helmet");
+	public static Item slowness_chainmail_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 1, Potion.moveSlowdown).setUnlocalizedName("slowness_chainmail_chestplate");
+	public static Item slowness_chainmail_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 2, Potion.moveSlowdown).setUnlocalizedName("slowness_chainmail_leggings");
+	public static Item slowness_chainmail_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 3, Potion.moveSlowdown).setUnlocalizedName("slowness_chainmail_boots");
 	public static Item slowness_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 0, Potion.moveSlowdown).setUnlocalizedName("slowness_iron_helmet");
 	public static Item slowness_iron_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 1, Potion.moveSlowdown).setUnlocalizedName("slowness_iron_chestplate");
 	public static Item slowness_iron_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 2, Potion.moveSlowdown).setUnlocalizedName("slowness_iron_leggings");

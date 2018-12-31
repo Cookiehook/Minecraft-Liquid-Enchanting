@@ -32,22 +32,22 @@ public class SlownessEffectRecipes {
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8202), 'B', new ItemStack(Items.leather_boots, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chain_helmet,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chainmail_helmet,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8202), 'B', new ItemStack(Items.chainmail_helmet, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chain_chestplate,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chainmail_chestplate,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8202), 'B', new ItemStack(Items.chainmail_chestplate, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chain_leggings,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chainmail_leggings,
 				"AAA",
 				"ABA",
 				"AAA",
 				'A', new ItemStack(Items.potionitem, 1, 8202), 'B', new ItemStack(Items.chainmail_leggings, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chain_boots,
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(SlownessEffectItems.slowness_chainmail_boots,
 				"AAA",
 				"ABA",
 				"AAA",

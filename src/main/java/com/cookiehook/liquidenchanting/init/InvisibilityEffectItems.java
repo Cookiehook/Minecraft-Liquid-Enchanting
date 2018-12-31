@@ -14,10 +14,10 @@ public class InvisibilityEffectItems {
 	public static Item invisibility_leather_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 1, Potion.invisibility).setUnlocalizedName("invisibility_leather_chestplate");
 	public static Item invisibility_leather_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 2, Potion.invisibility).setUnlocalizedName("invisibility_leather_leggings");
 	public static Item invisibility_leather_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.LEATHER, 0, 3, Potion.invisibility).setUnlocalizedName("invisibility_leather_boots");
-	public static Item invisibility_chain_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 0, Potion.invisibility).setUnlocalizedName("invisibility_chain_helmet");
-	public static Item invisibility_chain_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 1, Potion.invisibility).setUnlocalizedName("invisibility_chain_chestplate");
-	public static Item invisibility_chain_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 2, Potion.invisibility).setUnlocalizedName("invisibility_chain_leggings");
-	public static Item invisibility_chain_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 3, Potion.invisibility).setUnlocalizedName("invisibility_chain_boots");
+	public static Item invisibility_chainmail_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 0, Potion.invisibility).setUnlocalizedName("invisibility_chainmail_helmet");
+	public static Item invisibility_chainmail_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 1, Potion.invisibility).setUnlocalizedName("invisibility_chainmail_chestplate");
+	public static Item invisibility_chainmail_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 2, Potion.invisibility).setUnlocalizedName("invisibility_chainmail_leggings");
+	public static Item invisibility_chainmail_boots = new ItemPotionArmor(ItemArmor.ArmorMaterial.CHAIN, 1, 3, Potion.invisibility).setUnlocalizedName("invisibility_chainmail_boots");
 	public static Item invisibility_iron_helmet = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 0, Potion.invisibility).setUnlocalizedName("invisibility_iron_helmet");
 	public static Item invisibility_iron_chestplate = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 1, Potion.invisibility).setUnlocalizedName("invisibility_iron_chestplate");
 	public static Item invisibility_iron_leggings = new ItemPotionArmor(ItemArmor.ArmorMaterial.IRON, 2, 2, Potion.invisibility).setUnlocalizedName("invisibility_iron_leggings");

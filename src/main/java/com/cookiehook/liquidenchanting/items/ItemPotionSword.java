@@ -44,7 +44,7 @@ public class ItemPotionSword extends ItemSword{
 	//Adds the potion effect to any entity hit by the sword.
 	public boolean hitEntity(ItemStack stack, EntityLivingBase hitEntity, EntityLivingBase attackingEntity) {
 		hitEntity.addPotionEffect(new PotionEffect(potion.id, duration, amplifier));
-		return true;
+		return super.hitEntity(stack, hitEntity, attackingEntity);
 	}
 	
 	//Gives the "enchanted" animation.
