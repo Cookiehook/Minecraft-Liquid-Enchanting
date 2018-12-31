@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "type": "liquidenchanting:haste_armor_enabled",
+      "value": true
+    }
+  ],
+  "type": "liquidenchanting:preserve_nbt",
+  "pattern": [
+    "BSB",
+    "BXB",
+    "BTB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "X": {
+      "item": "minecraft:iron_leggings",
+      "data": 32767
+    },
+    "T": {
+      "item": "minecraft:iron_pickaxe"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:haste_iron_leggings",
+    "count": 1
+  }
+}

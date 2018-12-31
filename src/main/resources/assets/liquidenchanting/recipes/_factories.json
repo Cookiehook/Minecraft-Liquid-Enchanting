@@ -1,0 +1,17 @@
+{
+  "recipes": {
+    "potion_imbew": "com.cookiehook.liquidenchanting.util.crafting.PotionRecipeFactory",
+    "preserve_nbt": "com.cookiehook.liquidenchanting.util.crafting.PreserveNBTRecipe"
+  },
+  "conditions": {
+    "haste_armor_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "strong_haste_armor_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "resistance_armor_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "strong_resistance_armor_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+
+    "haste_sword_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "strong_haste_sword_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "resistance_sword_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory",
+    "strong_resistance_sword_enabled": "com.cookiehook.liquidenchanting.util.crafting.BeaconConditionFactory"
+  }
+}

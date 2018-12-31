@@ -1,9 +1,10 @@
 # eclipse
 bin
+*.launch
 .settings
 .metadata
 .classpath
-*.launch
+.project
 
 # idea
 out
@@ -14,7 +15,6 @@ out
 
 # gradle
 build
-bin
 .gradle
 
 # other
