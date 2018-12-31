@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "liquidenchanting:resistance_sword_enabled",
+      "value": true
+    }
+  ],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
@@ -13,7 +19,7 @@
       "item": "minecraft:nether_star"
     },
     "X": {
-      "item" : "minecraft:iron_sword",
+      "item": "minecraft:iron_sword",
       "data": 32767
     },
     "T": {

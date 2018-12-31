@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "liquidenchanting:resistance_armor_enabled",
+      "value": true
+    }
+  ],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
@@ -13,7 +19,7 @@
       "item": "minecraft:nether_star"
     },
     "X": {
-      "item" : "minecraft:diamond_leggings",
+      "item": "minecraft:diamond_leggings",
       "data": 32767
     },
     "T": {

@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "liquidenchanting:resistance_armor_enabled",
+      "value": true
+    }
+  ],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
@@ -13,7 +19,7 @@
       "item": "minecraft:nether_star"
     },
     "X": {
-      "item" : "minecraft:iron_helmet",
+      "item": "minecraft:iron_helmet",
       "data": 32767
     },
     "T": {

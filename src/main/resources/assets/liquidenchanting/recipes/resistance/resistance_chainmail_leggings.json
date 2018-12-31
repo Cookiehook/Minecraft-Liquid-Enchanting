@@ -1,4 +1,10 @@
 {
+  "conditions": [
+  {
+    "type": "liquidenchanting:resistance_armor_enabled",
+    "value": true
+  }
+],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
