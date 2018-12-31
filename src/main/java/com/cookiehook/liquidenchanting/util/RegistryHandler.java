@@ -1,4 +1,4 @@
-package com.cookiehook.liquidenchanting.util.handlers;
+package com.cookiehook.liquidenchanting.util;
 
 import com.cookiehook.liquidenchanting.Main;
 import com.cookiehook.liquidenchanting.init.ModItems;

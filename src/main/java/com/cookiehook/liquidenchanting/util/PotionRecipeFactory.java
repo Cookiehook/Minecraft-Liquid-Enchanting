@@ -102,20 +102,30 @@ public class PotionRecipeFactory implements IRecipeFactory {
         }
 
         /**
-         * Using the unique combination of potion effect and vanilla item name, looks for the corresponding liquidEnchanting
-         * item in the effectMap dictionary. This dictionary is populated in the same way on item registration, so we have a way
-         * to tie registered items to crafting recipes, without having to specify the potion type.
+         * Checks that the combination of potions and item have been implemented and are enabled in the config.
+         * This method works by interrogating registry names. The unique combination of vanilla item and potion names are
+         * used to identify the config entry and item to return.
          *
          * @param potionTag NBT Tag Compound from the potion, used to get potion name.
          * @param item      Vanilla armor / sword used in crafting recipe, used to get material and armor slot.
          * @return Instance of mod armor / sword
          */
         private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
+            // Get the name of the vanilla potion and item, then concatenate together.
             String potionName = potionTag.getTag("Potion").toString().split(":")[1].replace("\"", "");
-            String registryName = item.getRegistryName().toString().split(":")[1];
-            String dictionaryKey = potionName + "_" + registryName;
+            String itemName = item.getRegistryName().toString().split(":")[1];
+            String itemKey = potionName + "_" + itemName;
 
-            return ModItems.effectMap.get(dictionaryKey);
+            // Replace item specific names in the itemKey, so we end with names like "fire_resistance_sword" or "haste_armor"
+            String configKey = itemKey.replaceAll("(wooden|stone|iron|golden|diamond|leather|chainmail)_", "");
+            configKey = configKey.replaceAll("(helmet|chestplate|leggings|boots)", "armor");
+
+            // Check that the desired item is enabled in the config file, then return an instance of it if true.
+            Boolean configEnabled = Config.configMap.get(configKey);
+            if(configEnabled)
+                return ModItems.effectMap.get(itemKey);
+            else
+                return null;
         }
     }
 }
