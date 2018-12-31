@@ -25,13 +25,13 @@ public class InvisibilityEffectRecipes {
 				new ItemStack(Items.LEATHER_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_leather_boots, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.LEATHER_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_helmet, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_helmet, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_HELMET, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_chestplate, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_chestplate, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_leggings, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_leggings, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE)));
-		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chain_boots, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
+		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_chainmail_boots, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.CHAINMAIL_BOOTS, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedArmorUpgradeRecipe(InvisibilityEffectItems.invisibility_iron_helmet, "AAA", "ABA", "AAA", 'A', invisibilityPotion, 'B',
 				new ItemStack(Items.IRON_HELMET, 1, OreDictionary.WILDCARD_VALUE)));

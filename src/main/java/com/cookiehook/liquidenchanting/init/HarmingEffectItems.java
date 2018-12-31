@@ -14,11 +14,11 @@ public class HarmingEffectItems {
 	public static Item harming_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.INSTANT_DAMAGE, 1, 0, "harming_golden_sword");
 	public static Item harming_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INSTANT_DAMAGE, 1, 0, "harming_diamond_sword");
 	
-	public static Item harmingII_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_wooden_sword");
-	public static Item harmingII_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_stone_sword");
-	public static Item harmingII_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_iron_sword");
-	public static Item harmingII_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_golden_sword");
-	public static Item harmingII_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INSTANT_DAMAGE, 1, 1, "harmingII_diamond_sword");
+	public static Item strong_harming_wooden_sword = new ItemPotionSword(ItemTool.ToolMaterial.WOOD, MobEffects.INSTANT_DAMAGE, 1, 1, "strong_harming_wooden_sword");
+	public static Item strong_harming_stone_sword = new ItemPotionSword(ItemTool.ToolMaterial.STONE, MobEffects.INSTANT_DAMAGE, 1, 1, "strong_harming_stone_sword");
+	public static Item strong_harming_iron_sword = new ItemPotionSword(ItemTool.ToolMaterial.IRON, MobEffects.INSTANT_DAMAGE, 1, 1, "strong_harming_iron_sword");
+	public static Item strong_harming_golden_sword = new ItemPotionSword(ItemTool.ToolMaterial.GOLD, MobEffects.INSTANT_DAMAGE, 1, 1, "strong_harming_golden_sword");
+	public static Item strong_harming_diamond_sword = new ItemPotionSword(ItemTool.ToolMaterial.DIAMOND, MobEffects.INSTANT_DAMAGE, 1, 1, "strong_harming_diamond_sword");
 
 	public static void init() {
 		System.out.println("Initialising: Harming Items");
