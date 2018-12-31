@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "type": "liquidenchanting:haste_armor_enabled",
+      "value": true
+    }
+  ],
   "type": "liquidenchanting:preserve_nbt",
   "pattern": [
     "BSB",
@@ -13,7 +19,7 @@
       "item": "minecraft:nether_star"
     },
     "X": {
-      "item" : "minecraft:leather_helmet",
+      "item": "minecraft:leather_helmet",
       "data": 32767
     },
     "T": {

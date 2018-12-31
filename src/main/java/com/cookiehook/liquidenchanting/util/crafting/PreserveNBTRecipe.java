@@ -1,5 +1,6 @@
-package com.cookiehook.liquidenchanting.util;
+package com.cookiehook.liquidenchanting.util.crafting;
 
+import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemArmor;
@@ -27,7 +28,7 @@ public class PreserveNBTRecipe implements IRecipeFactory {
         primer.height = recipe.getRecipeHeight();
         primer.mirrored = JsonUtils.getBoolean(json, "mirrored", true);
         primer.input = recipe.getIngredients();
-        return new CopyNBTRecipe(new ResourceLocation(Reference.MOD_ID, "potion_imbew_crafting"), recipe.getRecipeOutput(), primer);
+        return new CopyNBTRecipe(new ResourceLocation(Reference.MOD_ID, "copy_nbt_crafting"), recipe.getRecipeOutput(), primer);
     }
 
     public static class CopyNBTRecipe extends ShapedOreRecipe {

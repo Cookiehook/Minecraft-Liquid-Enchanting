@@ -1,6 +1,8 @@
-package com.cookiehook.liquidenchanting.util;
+package com.cookiehook.liquidenchanting.util.crafting;
 
 import com.cookiehook.liquidenchanting.init.ModItems;
+import com.cookiehook.liquidenchanting.util.Config;
+import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;

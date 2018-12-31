@@ -9,7 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 public class Config {
 
     private static Configuration config;
-    static Map<String, Boolean> configMap = new HashMap<String, Boolean>();
+    public static Map<String, Boolean> configMap = new HashMap<String, Boolean>();
 
     public static void init(File file) {
         config = new Configuration(file);
