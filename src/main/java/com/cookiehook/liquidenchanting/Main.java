@@ -1,9 +1,11 @@
 package com.cookiehook.liquidenchanting;
 
+import com.cookiehook.liquidenchanting.events.PlayerEvent;
 import com.cookiehook.liquidenchanting.init.ModItems;
 import com.cookiehook.liquidenchanting.proxy.CommonProxy;
 import com.cookiehook.liquidenchanting.util.Config;
 import com.cookiehook.liquidenchanting.util.Reference;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,6 +35,7 @@ public class Main {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.registerItemColor();
+        MinecraftForge.EVENT_BUS.register(new PlayerEvent());
     }
 
 }

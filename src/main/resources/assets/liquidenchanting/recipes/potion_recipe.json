@@ -1,0 +1,17 @@
+{
+  "type": "liquidenchanting:potion_imbew",
+  "pattern": [
+    "PPP",
+    "P P",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:potion"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:liquid_enchanting",
+    "count": 1
+  }
+}

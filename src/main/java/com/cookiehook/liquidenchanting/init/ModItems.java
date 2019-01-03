@@ -20,21 +20,8 @@ public class ModItems {
 
     public static void registerItems() {
         itemList.add(new Item().setUnlocalizedName("liquid_enchanting").setRegistryName("liquid_enchanting"));
-        FireResistanceEffectItems.registerItems();
-        HarmingEffectItems.registerItems();
         HasteEffectItems.registerItems();
-        HealingEffectItems.registerItems();
-        InvisibilityEffectItems.registerItems();
-        JumpBoostResistanceEffectItems.registerItems();
-        NightVisionEffectItems.registerItems();
-        PoisonEffectItems.registerItems();
-        RegenerationEffectItems.registerItems();
         ResistanceEffectItems.registerItems();
-        SlownessEffectItems.registerItems();
-        SpeedEffectItems.registerItems();
-        StrengthEffectItems.registerItems();
-        WaterBreathingEffectItems.registerItems();
-        WeaknessEffectItems.registerItems();
     }
 
     /**

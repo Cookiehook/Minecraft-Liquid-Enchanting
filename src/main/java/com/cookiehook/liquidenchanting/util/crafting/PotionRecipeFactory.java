@@ -1,11 +1,8 @@
 package com.cookiehook.liquidenchanting.util.crafting;
 
-import com.cookiehook.liquidenchanting.init.ModItems;
-import com.cookiehook.liquidenchanting.util.Config;
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -51,7 +48,8 @@ public class PotionRecipeFactory implements IRecipeFactory {
             //Get the input item in the central slot, which will always be the sword / armor.
             ItemStack centreItemStack = inventory.getStackInSlot(4);
             NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
-            ItemStack output = new ItemStack(getModItemFromDictionary(targetPotion, centreItemStack.getItem()));
+            ItemStack output = centreItemStack.copy();
+            output.setTagCompound(targetPotion);
 
             // Check that we have an item in the centre slot and it is the correct item type, protects against NullPointerExceptions.
             if (centreItemStack != null && (centreItemStack.getItem() instanceof ItemArmor || centreItemStack.getItem() instanceof ItemSword)) {
@@ -60,8 +58,8 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 output.setItemDamage(newDamage);
 
                 // Calculate incoming item's enchantments, add it to the output.
-                NBTTagCompound enchant = centreItemStack.getTagCompound();
-                output.setTagCompound(enchant);
+//                NBTTagCompound enchant = centreItemStack.getTagCompound();
+//                output.setTagCompound(enchant);
             }
             return output;
         }
@@ -72,62 +70,27 @@ public class PotionRecipeFactory implements IRecipeFactory {
          * If true is returned, then getCraftingResult can be called to determine what item will be crafted.
          */
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
-            //First, call the standard check for ingredient matching. (All the right items in all the right places)
-            boolean itemsMatch = super.checkMatch(inventory, startX, startY, mirror);
-
-            //Only check that potions match if the standard check passes.
-            if (itemsMatch) {
-                //Get the potion tag for the first potion.
-                NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
-                if (targetPotion == null) {
-                    return false;
-                } else {
-                    for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
-                        if (i == 4) {
-                            continue; //Skip the central slot, as it will be armor / sword.
-                        }
-                        //Check that the potion on the current item is the same as the first potion.
-                        NBTTagCompound currentPotion = inventory.getStackInSlot(i).getTagCompound();
-                        if (currentPotion == null || !currentPotion.equals(targetPotion)) {
+            //Get the potion tag for the first potion.
+            NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
+            if (targetPotion == null) {
+                return false;
+            } else {
+                for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
+                    if (i == 4) {
+                        if (inventory.getStackInSlot(i).getItem() instanceof ItemArmor) {
+                            continue;
+                        } else {
                             return false;
                         }
                     }
-                    // Check that a mod item for this potion has been implemented
-                    if (getModItemFromDictionary(targetPotion, inventory.getStackInSlot(4).getItem()) == null) {
+                    //Check that the potion on the current item is the same as the first potion.
+                    NBTTagCompound currentPotion = inventory.getStackInSlot(i).getTagCompound();
+                    if (currentPotion == null || !currentPotion.equals(targetPotion)) {
                         return false;
                     }
                 }
-                return true;
-            } else {
-                return false;
             }
-        }
-
-        /**
-         * Checks that the combination of potions and item have been implemented and are enabled in the config.
-         * This method works by interrogating registry names. The unique combination of vanilla item and potion names are
-         * used to identify the config entry and item to return.
-         *
-         * @param potionTag NBT Tag Compound from the potion, used to get potion name.
-         * @param item      Vanilla armor / sword used in crafting recipe, used to get material and armor slot.
-         * @return Instance of mod armor / sword
-         */
-        private Item getModItemFromDictionary(NBTTagCompound potionTag, Item item) {
-            // Get the name of the vanilla potion and item, then concatenate together.
-            String potionName = potionTag.getTag("Potion").toString().split(":")[1].replace("\"", "");
-            String itemName = item.getRegistryName().toString().split(":")[1];
-            String itemKey = potionName + "_" + itemName;
-
-            // Replace item specific names in the itemKey, so we end with names like "fire_resistance_sword" or "haste_armor"
-            String configKey = itemKey.replaceAll("(wooden|stone|iron|golden|diamond|leather|chainmail)_", "");
-            configKey = configKey.replaceAll("(helmet|chestplate|leggings|boots)", "armor");
-
-            // Check that the desired item is enabled in the config file, then return an instance of it if true.
-            Boolean configEnabled = Config.configMap.get(configKey);
-            if(configEnabled)
-                return ModItems.effectMap.get(itemKey);
-            else
-                return null;
+            return true;
         }
     }
 }
