@@ -77,7 +77,7 @@ public class PotionRecipeFactory implements IRecipeFactory {
             } else {
                 for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
                     if (i == 4) {
-                        if (inventory.getStackInSlot(i).getItem() instanceof ItemArmor) {
+                        if (inventory.getStackInSlot(i).getItem() instanceof ItemArmor || inventory.getStackInSlot(i).getItem() instanceof ItemSword) {
                             continue;
                         } else {
                             return false;
