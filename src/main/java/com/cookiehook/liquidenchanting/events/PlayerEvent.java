@@ -23,28 +23,21 @@ public class PlayerEvent {
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
-        int amplifier = 0;
+
         Iterator<ItemStack> armor = player.getArmorInventoryList().iterator();
         List<ItemStack> armorStack = Lists.newArrayList(armor);
 
         for (ItemStack itemstack : armorStack) {
+            int amplifier = 0;
             NBTTagCompound nbtTagCompound = itemstack.getTagCompound();
             if (nbtTagCompound != null) {
                 String potionName = nbtTagCompound.getString("Potion");
                 if (!potionName.equals("")) {
-                    // Remove domain name and prefix for extended duration, as we don't care about those.
-                    potionName = potionName.split(":")[1].replace("long_", "");
-                    if (potionName.startsWith("strong_")) {  //Set amplifier and sanitise name for level II potions.
+                    if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
                         amplifier = 1;
-                        potionName = potionName.replace("strong_", "");
-                    }
-                    switch (potionName) {
-                        case "leaping": potionName = "jump_boost"; break;
-                        case "swiftness": potionName = "speed"; break;
                     }
 
-
-
+                    potionName = sanitisePotionName(potionName);
                     Potion potion = Potion.getPotionFromResourceLocation(potionName);
                     if (potion != null) {
                         addPotionEffect(player, potion, 10, amplifier);
@@ -66,28 +59,36 @@ public class PlayerEvent {
             if (nbtTagCompound != null) {
                 String potionName = nbtTagCompound.getString("Potion");
                 if (!potionName.equals("")) {
-                    // Remove domain name and prefix for extended duration, as we don't care about those.
-                    potionName = potionName.split(":")[1].replace("long_", "");
-                    if (potionName.startsWith("strong_")) {  //Set amplifier and sanitise name for level II potions.
+                    if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
                         level = "II";
-                        potionName = potionName.replace("strong_", "");
                     }
-
-                    switch (potionName) {
-                        case "leaping": potionName = "jump_boost"; break;
-                        case "swiftness": potionName = "speed"; break;
-                    }
-
+                    potionName = sanitisePotionName(potionName);
                     Potion potion = Potion.getPotionFromResourceLocation(potionName);
                     if (potion != null) {
                         potionName = potion.getName();
                     } else {
                         potionName = "effect.none";
                     }
+
                     toolTip.add(1, I18n.format(potionName) + " " + level);
                 }
             }
         }
+    }
+
+    /**
+     * Takes the name of a potion from NBT, and converts to the appropriate name for the potion registry
+     * @param potionName Potion name from NBT
+     * @return Potion name for potion registry
+     */
+    private String sanitisePotionName(String potionName) {
+        potionName = potionName.split(":")[1].replaceAll("(long|strong)_", "");
+        switch (potionName) {
+            case "leaping": potionName = "jump_boost"; break;
+            case "swiftness": potionName = "speed"; break;
+        }
+
+        return potionName;
     }
 
 
