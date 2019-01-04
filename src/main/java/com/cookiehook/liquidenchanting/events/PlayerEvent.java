@@ -41,7 +41,7 @@ public class PlayerEvent {
                         amplifier = 1;
                     }
 
-                    potionName = sanitisePotionName(potionName);
+                    potionName = sanitisePotionName(potionName, false);
                     Potion potion = Potion.getPotionFromResourceLocation(potionName);
                     if (potion != null) {
                         addPotionEffect(player, potion, 10, amplifier, false);
@@ -56,6 +56,7 @@ public class PlayerEvent {
         ItemStack itemStack = event.getItemStack();
         List<String> toolTip = event.getToolTip();
         String level = "";
+        boolean allowHealing = false;
         // Let's not accidentally muck around with every item in the game OK?
         if (itemStack.getItem() instanceof ItemArmor || itemStack.getItem() instanceof ItemSword) {
 
@@ -66,14 +67,17 @@ public class PlayerEvent {
                     if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
                         level = "II";
                     }
-                    potionName = sanitisePotionName(potionName);
+                    if (itemStack.getItem() instanceof ItemSword) {
+                        allowHealing = true;
+                    }
+
+                    potionName = sanitisePotionName(potionName, allowHealing);
                     Potion potion = Potion.getPotionFromResourceLocation(potionName);
                     if (potion != null) {
                         potionName = potion.getName();
                     } else {
                         potionName = "effect.none";
                     }
-
                     toolTip.add(1, I18n.format(potionName) + " " + level);
                 }
             }
@@ -85,6 +89,7 @@ public class PlayerEvent {
         Entity target = event.getTarget();
         EntityPlayer player = event.getEntityPlayer();
         ItemStack weapon = player.getHeldItemMainhand();
+        int duration = 200;
 
         if (weapon.getItem() instanceof ItemSword) {
 
@@ -97,10 +102,13 @@ public class PlayerEvent {
                         amplifier = 1;
                     }
 
-                    potionName = sanitisePotionName(potionName);
+                    potionName = sanitisePotionName(potionName, true);
                     Potion potion = Potion.getPotionFromResourceLocation(potionName);
                     if (potion != null && target instanceof EntityLivingBase) {
-                        addPotionEffect((EntityLivingBase) target, potion, 200, amplifier, true);
+                        if (potion == MobEffects.INSTANT_HEALTH || potion == MobEffects.INSTANT_DAMAGE) {
+                            duration = 1;
+                        }
+                        addPotionEffect((EntityLivingBase) target, potion, duration, amplifier, true);
                     }
                 }
             }
@@ -113,11 +121,18 @@ public class PlayerEvent {
      * @param potionName Potion name from NBT
      * @return Potion name for potion registry
      */
-    private String sanitisePotionName(String potionName) {
+    private String sanitisePotionName(String potionName, boolean allowHealing) {
         potionName = potionName.split(":")[1].replaceAll("(long|strong)_", "");
         switch (potionName) {
             case "leaping": potionName = "jump_boost"; break;
             case "swiftness": potionName = "speed"; break;
+        }
+
+        if (allowHealing) {
+            switch (potionName) {
+                case "healing": potionName = "instant_health"; break;
+                case "harming": potionName = "instant_damage"; break;
+            }
         }
 
         return potionName;
