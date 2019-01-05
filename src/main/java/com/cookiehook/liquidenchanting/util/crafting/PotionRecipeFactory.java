@@ -5,11 +5,9 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IRecipeFactory;
 import net.minecraftforge.common.crafting.JsonContext;
@@ -75,7 +73,7 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
                     if (i == 4) {  //For the middle slot, only check that it is a tool, weapon, armor
                         Item centreItem = inventory.getStackInSlot(i).getItem();
-                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool) {
+                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
                             continue;
                         } else {
                             return false;

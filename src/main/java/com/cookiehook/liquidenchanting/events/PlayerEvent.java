@@ -56,7 +56,7 @@ public class PlayerEvent {
 
         // Let's not accidentally muck around with every item in the game OK?
         Item item = itemStack.getItem();
-        if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool) {
+        if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
 
             NBTTagCompound nbtTagCompound = itemStack.getTagCompound();
             if (nbtTagCompound != null) {
@@ -88,8 +88,9 @@ public class PlayerEvent {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack weapon = player.getHeldItemMainhand();
         int duration = 200;
+        Item item = weapon.getItem();
 
-        if (weapon.getItem() instanceof ItemSword || weapon.getItem() instanceof ItemTool) {
+        if (item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
 
             int amplifier = 0;
             NBTTagCompound nbtTagCompound = weapon.getTagCompound();
