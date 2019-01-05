@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -75,7 +76,7 @@ public class PlayerEvent {
                     } else {
                         potionName = "effect.none";
                     }
-                    toolTip.add(1, I18n.format(potionName) + " " + level);
+                    toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
                 }
             }
         }
@@ -119,16 +120,16 @@ public class PlayerEvent {
      * @return Potion name for potion registry
      */
     private String sanitisePotionName(String potionName, boolean allowHealing) {
-        potionName = potionName.split(":")[1].replaceAll("(long|strong)_", "");
+        potionName = potionName.replaceAll("(long|strong)_", "");
         switch (potionName) {
-            case "leaping": potionName = "jump_boost"; break;
-            case "swiftness": potionName = "speed"; break;
+            case "minecraft:leaping": potionName = "jump_boost"; break;
+            case "minecraft:swiftness": potionName = "speed"; break;
         }
 
         if (allowHealing) {
             switch (potionName) {
-                case "healing": potionName = "instant_health"; break;
-                case "harming": potionName = "instant_damage"; break;
+                case "minecraft:healing": potionName = "instant_health"; break;
+                case "minecraft:harming": potionName = "instant_damage"; break;
             }
         }
 
