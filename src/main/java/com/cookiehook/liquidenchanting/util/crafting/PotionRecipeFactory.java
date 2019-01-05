@@ -3,10 +3,9 @@ package com.cookiehook.liquidenchanting.util.crafting;
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
@@ -47,20 +46,18 @@ public class PotionRecipeFactory implements IRecipeFactory {
         public ItemStack getCraftingResult(@Nonnull InventoryCrafting inventory) {
             //Get the input item in the central slot, which will always be the sword / armor.
             ItemStack centreItemStack = inventory.getStackInSlot(4);
-            NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
             ItemStack output = centreItemStack.copy();
-            output.setTagCompound(targetPotion);
 
-            // Check that we have an item in the centre slot and it is the correct item type, protects against NullPointerExceptions.
-            if (centreItemStack != null && (centreItemStack.getItem() instanceof ItemArmor || centreItemStack.getItem() instanceof ItemSword)) {
-                // Calculate incoming item's damage value, adding it to the output.
-                int newDamage = MathHelper.clamp(centreItemStack.getItemDamage(), 0, output.getMaxDamage());
-                output.setItemDamage(newDamage);
-
-                // Calculate incoming item's enchantments, add it to the output.
-//                NBTTagCompound enchant = centreItemStack.getTagCompound();
-//                output.setTagCompound(enchant);
+            // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
+            NBTTagCompound inputTag = centreItemStack.getTagCompound();
+            NBTTagCompound targetPotionTag = inventory.getStackInSlot(0).getTagCompound();
+            if (inputTag != null) {
+                inputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
+                output.setTagCompound(inputTag);
+            } else {
+                output.setTagCompound(targetPotionTag);
             }
+
             return output;
         }
 
@@ -76,8 +73,9 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 return false;
             } else {
                 for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
-                    if (i == 4) {
-                        if (inventory.getStackInSlot(i).getItem() instanceof ItemArmor || inventory.getStackInSlot(i).getItem() instanceof ItemSword) {
+                    if (i == 4) {  //For the middle slot, only check that it is a tool, weapon, armor
+                        Item centreItem = inventory.getStackInSlot(i).getItem();
+                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool) {
                             continue;
                         } else {
                             return false;

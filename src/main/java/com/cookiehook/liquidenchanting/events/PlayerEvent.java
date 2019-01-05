@@ -6,9 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -20,14 +18,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class PlayerEvent {
-
 
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
         EntityLivingBase player = event.player;
-
         Iterator<ItemStack> armor = player.getArmorInventoryList().iterator();
         List<ItemStack> armorStack = Lists.newArrayList(armor);
 
@@ -57,8 +52,10 @@ public class PlayerEvent {
         List<String> toolTip = event.getToolTip();
         String level = "";
         boolean allowHealing = false;
+
         // Let's not accidentally muck around with every item in the game OK?
-        if (itemStack.getItem() instanceof ItemArmor || itemStack.getItem() instanceof ItemSword) {
+        Item item = itemStack.getItem();
+        if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool) {
 
             NBTTagCompound nbtTagCompound = itemStack.getTagCompound();
             if (nbtTagCompound != null) {
@@ -91,7 +88,7 @@ public class PlayerEvent {
         ItemStack weapon = player.getHeldItemMainhand();
         int duration = 200;
 
-        if (weapon.getItem() instanceof ItemSword) {
+        if (weapon.getItem() instanceof ItemSword || weapon.getItem() instanceof ItemTool) {
 
             int amplifier = 0;
             NBTTagCompound nbtTagCompound = weapon.getTagCompound();
@@ -117,8 +114,8 @@ public class PlayerEvent {
 
     /**
      * Takes the name of a potion from NBT, and converts to the appropriate name for the potion registry
-     *
      * @param potionName Potion name from NBT
+     * @param allowHealing Whether healing / harming potions can be processed
      * @return Potion name for potion registry
      */
     private String sanitisePotionName(String potionName, boolean allowHealing) {
