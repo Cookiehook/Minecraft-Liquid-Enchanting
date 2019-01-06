@@ -36,7 +36,8 @@ public class PlayerEvent {
 
             if (potionType != null) {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
-                    addPotionEffect(player, potionEffect.getPotion(), 10, potionEffect.getAmplifier(), false);
+                    if (!potionEffect.getPotion().isInstant())
+                        addPotionEffect(player, potionEffect.getPotion(), 10, potionEffect.getAmplifier(), false);
                 }
             }
         }
@@ -55,12 +56,13 @@ public class PlayerEvent {
 
             if (potionType != null) {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
-                    String potionName = potionEffect.getPotion().getName();
-                    String level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
-                    toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
+                    if (!(item instanceof ItemArmor && potionEffect.getPotion().isInstant())) {
+                        String potionName = potionEffect.getPotion().getName();
+                        String level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
+                        toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
+                    }
                 }
             }
-
         }
     }
 
@@ -78,12 +80,12 @@ public class PlayerEvent {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
                     Potion potion = potionEffect.getPotion();
                     int duration = potion.isInstant() ? 1 : 200;
-                    addPotionEffect((EntityLivingBase) target, potion, duration, potionEffect.getAmplifier(), true);
+                    EntityLivingBase livingTarget = (EntityLivingBase) target;
+                    livingTarget.addPotionEffect(new PotionEffect(potion, duration, potionEffect.getAmplifier(), false, true));
                 }
             }
         }
     }
-
 
     private PotionType getPotionTypeFromNBT(NBTTagCompound nbtTagCompound) {
         PotionType potionType = null;
@@ -97,18 +99,19 @@ public class PlayerEvent {
     }
 
     private void addPotionEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean showParticles) {
-        // These potions rely on the timer counting down to give the effect, so we add them once every 10 seconds
-        if (potion == MobEffects.REGENERATION || potion == MobEffects.POISON || potion == MobEffects.WITHER) {
-            if (!entity.isPotionActive(potion)) {
-                entity.addPotionEffect(new PotionEffect(potion, 200, amplifier, false, showParticles));
+        PotionEffect activeEffect = entity.getActivePotionEffect(potion);
+        //Get the minimum amount of time needed for this potion to have an effect
+        for (int i = 20; i < 1000; i++) {
+            if (potion.isReady(i, amplifier)) {
+                duration = i;
+                break;
             }
-            // Night vision flickers when below 10 seconds, this give uninterrupted effect whilst the armor is worn
-        } else if (potion == MobEffects.NIGHT_VISION) {
+        }
+
+        if (potion == MobEffects.NIGHT_VISION) {
             entity.addPotionEffect(new PotionEffect(potion, 210, amplifier, false, showParticles));
-        } else {
+        } else if (activeEffect == null || potion.isReady(activeEffect.getDuration(), activeEffect.getAmplifier())) {
             entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, false, showParticles));
         }
     }
-
-
 }
