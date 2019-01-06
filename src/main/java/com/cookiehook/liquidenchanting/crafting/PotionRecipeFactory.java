@@ -48,7 +48,8 @@ public class PotionRecipeFactory implements IRecipeFactory {
 
             // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
             NBTTagCompound inputTag = centreItemStack.getTagCompound();
-            NBTTagCompound targetPotionTag = inventory.getStackInSlot(0).getTagCompound();
+            NBTTagCompound targetPotionTag = inventory.getStackInSlot(0).getTagCompound().copy();
+            targetPotionTag.removeTag("display");
             if (inputTag != null) {
                 inputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
                 output.setTagCompound(inputTag);
