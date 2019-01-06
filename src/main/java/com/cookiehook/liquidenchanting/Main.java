@@ -28,7 +28,6 @@ public class Main {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        proxy.registerItemColor();
         MinecraftForge.EVENT_BUS.register(new PlayerEvent());
     }
 

@@ -37,13 +37,11 @@ public class PlayerEvent {
         for (ItemStack itemstack : armorStack) {  //Loops through each armor slot
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(itemstack.getTagCompound());
 
-            if (potionEffects != null) {
-                for (PotionEffect potionEffect : potionEffects) {
-                    //Instant potion effects given every tick would render players immortal or instantly dead.
-                    //Disabling them here for that reason.
-                    if (!potionEffect.getPotion().isInstant()) {
-                        addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
-                    }
+            for (PotionEffect potionEffect : potionEffects) {
+                //Instant potion effects given every tick would render players immortal or instantly dead.
+                //Disabling them here for that reason.
+                if (!potionEffect.getPotion().isInstant()) {
+                    addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
                 }
             }
         }
@@ -59,7 +57,7 @@ public class PlayerEvent {
         if (item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(weapon.getTagCompound());
 
-            if (potionEffects != null && target instanceof EntityLivingBase) {
+            if (target instanceof EntityLivingBase) {
                 for (PotionEffect potionEffect : potionEffects) {
                     Potion potion = potionEffect.getPotion();
                     int duration = potion.isInstant() ? 1 : 200;
@@ -80,13 +78,15 @@ public class PlayerEvent {
         if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(itemStack.getTagCompound());
 
-            if (potionEffects != null) {
-                for (PotionEffect potionEffect : potionEffects) {
-                    if (!(item instanceof ItemArmor && potionEffect.getPotion().isInstant())) {
-                        String potionName = potionEffect.getPotion().getName();
-                        String level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
-                        toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
+            for (PotionEffect potionEffect : potionEffects) {
+                if (!(item instanceof ItemArmor && potionEffect.getPotion().isInstant())) {
+                    String level = "";
+                    TextFormatting textFormat = potionEffect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE;
+                    String potionName = potionEffect.getPotion().getName();
+                    if (potionEffect.getAmplifier() > 0) {
+                        level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
                     }
+                    toolTip.add(1, textFormat + I18n.format(potionName) + " " + level);
                 }
             }
         }
@@ -109,8 +109,7 @@ public class PlayerEvent {
 
             NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
             for (NBTBase tag : customPotionList) {
-                NBTTagCompound tagCompound = (NBTTagCompound) tag;
-                potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT(tagCompound));
+                potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
             }
         }
         return potionEffects;
@@ -125,7 +124,8 @@ public class PlayerEvent {
      */
     private void addPotionEffect(EntityLivingBase entity, Potion potion, int amplifier) {
         PotionEffect activeEffect = entity.getActivePotionEffect(potion);
-        //Get the minimum amount of time needed for this potion to have an effect
+        //Get the minimum amount of time needed for this potion to have an effect. Necessary to allow potions
+        // like regeneration and poison to count down and have an effect on the player
         int duration = 10;
         for (int i = duration; i < 1000; i++) {
             if (potion.isReady(i, amplifier)) {
@@ -137,7 +137,8 @@ public class PlayerEvent {
         //Night vision specifically flickers when given less than 10 seconds duration, hence hard-coding duration here
         if (potion == MobEffects.NIGHT_VISION) {
             entity.addPotionEffect(new PotionEffect(potion, 210, amplifier, false, false));
-        } else if (activeEffect == null || activeEffect.getDuration() < 2) {
+            //Add the potion effect to the target if it isn't already effected, or is about to run out.
+        } else if (activeEffect == null || activeEffect.getDuration() < 10) {
             entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, false, false));
         }
     }

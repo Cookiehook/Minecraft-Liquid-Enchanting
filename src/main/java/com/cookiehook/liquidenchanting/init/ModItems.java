@@ -3,9 +3,7 @@ package com.cookiehook.liquidenchanting.init;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ModItems {
 
