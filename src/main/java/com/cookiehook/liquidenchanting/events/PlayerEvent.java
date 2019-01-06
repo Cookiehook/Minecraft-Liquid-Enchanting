@@ -1,5 +1,6 @@
 package com.cookiehook.liquidenchanting.events;
 
+import com.cookiehook.liquidenchanting.util.Config;
 import com.cookiehook.liquidenchanting.util.RomanNumber;
 import com.google.common.collect.Lists;
 import net.minecraft.client.resources.I18n;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class PlayerEvent {
             for (PotionEffect potionEffect : potionEffects) {
                 //Instant potion effects given every tick would render players immortal or instantly dead.
                 //Disabling them here for that reason.
-                if (!potionEffect.getPotion().isInstant()) {
+                if (!potionEffect.getPotion().isInstant() || Config.instantEffectEnabled) {
                     addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
                 }
             }
@@ -60,7 +62,7 @@ public class PlayerEvent {
             if (target instanceof EntityLivingBase) {
                 for (PotionEffect potionEffect : potionEffects) {
                     Potion potion = potionEffect.getPotion();
-                    int duration = potion.isInstant() ? 1 : 200;
+                    int duration = potion.isInstant() ? 1 : Config.weaponEffectTime;
                     ((EntityLivingBase) target).addPotionEffect(new PotionEffect(potion, duration, potionEffect.getAmplifier(), false, true));
                 }
             }
@@ -79,7 +81,7 @@ public class PlayerEvent {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(itemStack.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {
-                if (!(item instanceof ItemArmor && potionEffect.getPotion().isInstant())) {
+                if (!(item instanceof ItemArmor && potionEffect.getPotion().isInstant()) || Config.instantEffectEnabled) {
                     String level = "";
                     TextFormatting textFormat = potionEffect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE;
                     String potionName = potionEffect.getPotion().getName();
@@ -107,11 +109,25 @@ public class PlayerEvent {
                 potionEffects.addAll(PotionType.getPotionTypeForName(potionName).getEffects());
             }
 
-            NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
-            for (NBTBase tag : customPotionList) {
-                potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
+            if (Config.combinedCraftingEnabled) {
+                NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
+                for (NBTBase tag : customPotionList) {
+                    potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
+                }
             }
         }
+
+        //Removes any effects which were configured as "disabled" from the list to be returned.
+        //Temporarily add items to remove to a separate collection to avoid ConcurrentModificationExceptions.
+        List<PotionEffect> effectsToRemove = new ArrayList<PotionEffect>();
+        for (PotionEffect effect : potionEffects) {
+            String effectName = effect.getPotion().getRegistryName().toString();
+            if (Arrays.asList(Config.disabledPotions).contains(effectName)) {
+                effectsToRemove.add(effect);
+            }
+        }
+        potionEffects.removeAll(effectsToRemove);
+
         return potionEffects;
     }
 
