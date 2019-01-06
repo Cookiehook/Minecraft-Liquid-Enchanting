@@ -1,5 +1,6 @@
 package com.cookiehook.liquidenchanting.events;
 
+import com.cookiehook.liquidenchanting.util.RomanNumber;
 import com.google.common.collect.Lists;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -35,7 +36,7 @@ public class PlayerEvent {
 
             if (potionType != null) {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
-                    addPotionEffect(player, potionEffect.getPotion(), 100, potionEffect.getAmplifier(), false);
+                    addPotionEffect(player, potionEffect.getPotion(), 10, potionEffect.getAmplifier(), false);
                 }
             }
         }
@@ -55,7 +56,7 @@ public class PlayerEvent {
             if (potionType != null) {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
                     String potionName = potionEffect.getPotion().getName();
-                    String level = (potionEffect.getAmplifier() > 0) ? "II" : "";
+                    String level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
                     toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
                 }
             }
@@ -76,7 +77,7 @@ public class PlayerEvent {
             if (potionType != null && target instanceof EntityLivingBase) {
                 for (PotionEffect potionEffect : potionType.getEffects()) {
                     Potion potion = potionEffect.getPotion();
-                    int duration = potion.isInstant() ? 1 : 50;
+                    int duration = potion.isInstant() ? 1 : 200;
                     addPotionEffect((EntityLivingBase) target, potion, duration, potionEffect.getAmplifier(), true);
                 }
             }
