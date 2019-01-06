@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
@@ -64,30 +65,50 @@ public class PotionRecipeFactory implements IRecipeFactory {
          * This is called by the vanilla crafting mechanics to determine whether the ingredients in the crafting table
          * match any given recipe. Returning false means the ingredients weren't a match, true means they were.
          * If true is returned, then getCraftingResult can be called to determine what item will be crafted.
+         *
+         * This is predominantly a copy / paste from the vanilla implementation. We need most of the checks
+         * from the vanilla, but need a special check for the centre slot. As such, we can't just call the super.
          */
+        @Override
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
-            //Get the potion tag for the first potion.
-            NBTTagCompound targetPotion = inventory.getStackInSlot(0).getTagCompound();
+            NBTTagCompound targetPotion = inventory.getStackInRowAndColumn(0, 0).getTagCompound();
             if (targetPotion == null) {
                 return false;
             } else {
-                for (int i = 0; i < inventory.getSizeInventory(); ++i) { //For each slot in the crafing grid...
-                    if (i == 4) {  //For the middle slot, only check that it is a tool, weapon, armor
-                        Item centreItem = inventory.getStackInSlot(i).getItem();
-                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
-                            continue;
-                        } else {
+                for (int x = 0; x < inventory.getWidth(); x++) {
+                    for (int y = 0; y < inventory.getHeight(); y++) {
+                        if (x == 1 && y == 1) {
+                            Item centreItem = inventory.getStackInRowAndColumn(x, y).getItem();
+                            if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
+                                continue;
+                            } else {
+                                return false;
+                            }
+                        }
+                        int subX = x - startX;
+                        int subY = y - startY;
+                        Ingredient target = Ingredient.EMPTY;
+
+                        if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
+                            if (mirror) {
+                                target = input.get(width - subX - 1 + subY * width);
+                            } else {
+                                target = input.get(subX + subY * width);
+                            }
+                        }
+                        if (!target.apply(inventory.getStackInRowAndColumn(x, y))) {
+                            return false;
+                        }
+                        //Check that the potion on the current item is the same as the first potion.
+                        NBTTagCompound currentPotion = inventory.getStackInRowAndColumn(x, y).getTagCompound();
+                        if (currentPotion == null || !currentPotion.equals(targetPotion)) {
                             return false;
                         }
                     }
-                    //Check that the potion on the current item is the same as the first potion.
-                    NBTTagCompound currentPotion = inventory.getStackInSlot(i).getTagCompound();
-                    if (currentPotion == null || !currentPotion.equals(targetPotion)) {
-                        return false;
-                    }
                 }
+
+                return true;
             }
-            return true;
         }
     }
 }
