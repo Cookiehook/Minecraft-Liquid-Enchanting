@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -30,20 +31,11 @@ public class PlayerEvent {
         List<ItemStack> armorStack = Lists.newArrayList(armor);
 
         for (ItemStack itemstack : armorStack) {
-            int amplifier = 0;
-            NBTTagCompound nbtTagCompound = itemstack.getTagCompound();
-            if (nbtTagCompound != null) {
-                String potionName = nbtTagCompound.getString("Potion");
-                if (!potionName.equals("")) {
-                    if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
-                        amplifier = 1;
-                    }
+            PotionType potionType = getPotionTypeFromNBT(itemstack.getTagCompound());
 
-                    potionName = sanitisePotionName(potionName, false);
-                    Potion potion = Potion.getPotionFromResourceLocation(potionName);
-                    if (potion != null) {
-                        addPotionEffect(player, potion, 10, amplifier, false);
-                    }
+            if (potionType != null) {
+                for (PotionEffect potionEffect : potionType.getEffects()) {
+                    addPotionEffect(player, potionEffect.getPotion(), 100, potionEffect.getAmplifier(), false);
                 }
             }
         }
@@ -53,35 +45,21 @@ public class PlayerEvent {
     @SideOnly(Side.CLIENT)
     public void toolTipEvent(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
+        Item item = itemStack.getItem();
         List<String> toolTip = event.getToolTip();
-        String level = "";
-        boolean allowHealing = false;
 
         // Let's not accidentally muck around with every item in the game OK?
-        Item item = itemStack.getItem();
         if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
+            PotionType potionType = getPotionTypeFromNBT(itemStack.getTagCompound());
 
-            NBTTagCompound nbtTagCompound = itemStack.getTagCompound();
-            if (nbtTagCompound != null) {
-                String potionName = nbtTagCompound.getString("Potion");
-                if (!potionName.equals("")) {
-                    if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
-                        level = "II";
-                    }
-                    if (itemStack.getItem() instanceof ItemSword) {
-                        allowHealing = true;
-                    }
-
-                    potionName = sanitisePotionName(potionName, allowHealing);
-                    Potion potion = Potion.getPotionFromResourceLocation(potionName);
-                    if (potion != null) {
-                        potionName = potion.getName();
-                    } else {
-                        potionName = "effect.none";
-                    }
+            if (potionType != null) {
+                for (PotionEffect potionEffect : potionType.getEffects()) {
+                    String potionName = potionEffect.getPotion().getName();
+                    String level = (potionEffect.getAmplifier() > 0) ? "II" : "";
                     toolTip.add(1, TextFormatting.BLUE + I18n.format(potionName) + " " + level);
                 }
             }
+
         }
     }
 
@@ -90,60 +68,36 @@ public class PlayerEvent {
         Entity target = event.getTarget();
         EntityPlayer player = event.getEntityPlayer();
         ItemStack weapon = player.getHeldItemMainhand();
-        int duration = 200;
         Item item = weapon.getItem();
 
         if (item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
+            PotionType potionType = getPotionTypeFromNBT(weapon.getTagCompound());
 
-            int amplifier = 0;
-            NBTTagCompound nbtTagCompound = weapon.getTagCompound();
-            if (nbtTagCompound != null) {
-                String potionName = nbtTagCompound.getString("Potion");
-                if (!potionName.equals("")) {
-                    if (potionName.contains("strong_")) {  //Set amplifier for level II potions.
-                        amplifier = 1;
-                    }
-
-                    potionName = sanitisePotionName(potionName, true);
-                    Potion potion = Potion.getPotionFromResourceLocation(potionName);
-                    if (potion != null && target instanceof EntityLivingBase) {
-                        if (potion == MobEffects.INSTANT_HEALTH || potion == MobEffects.INSTANT_DAMAGE) {
-                            duration = 1;
-                        }
-                        addPotionEffect((EntityLivingBase) target, potion, duration, amplifier, true);
-                    }
+            if (potionType != null && target instanceof EntityLivingBase) {
+                for (PotionEffect potionEffect : potionType.getEffects()) {
+                    Potion potion = potionEffect.getPotion();
+                    int duration = potion.isInstant() ? 1 : 50;
+                    addPotionEffect((EntityLivingBase) target, potion, duration, potionEffect.getAmplifier(), true);
                 }
             }
         }
     }
 
-    /**
-     * Takes the name of a potion from NBT, and converts to the appropriate name for the potion registry
-     * @param potionName Potion name from NBT
-     * @param allowHealing Whether healing / harming potions can be processed
-     * @return Potion name for potion registry
-     */
-    private String sanitisePotionName(String potionName, boolean allowHealing) {
-        potionName = potionName.replaceAll("(long|strong)_", "");
-        switch (potionName) {
-            case "minecraft:leaping": potionName = "jump_boost"; break;
-            case "minecraft:swiftness": potionName = "speed"; break;
-        }
 
-        if (allowHealing) {
-            switch (potionName) {
-                case "minecraft:healing": potionName = "instant_health"; break;
-                case "minecraft:harming": potionName = "instant_damage"; break;
+    private PotionType getPotionTypeFromNBT(NBTTagCompound nbtTagCompound) {
+        PotionType potionType = null;
+        if (nbtTagCompound != null) {
+            String potionName = nbtTagCompound.getString("Potion");
+            if (!potionName.equals("")) {
+                potionType = PotionType.getPotionTypeForName(potionName);
             }
         }
-
-        return potionName;
+        return potionType;
     }
-
 
     private void addPotionEffect(EntityLivingBase entity, Potion potion, int duration, int amplifier, boolean showParticles) {
         // These potions rely on the timer counting down to give the effect, so we add them once every 10 seconds
-        if (potion == MobEffects.REGENERATION || potion == MobEffects.POISON) {
+        if (potion == MobEffects.REGENERATION || potion == MobEffects.POISON || potion == MobEffects.WITHER) {
             if (!entity.isPotionActive(potion)) {
                 entity.addPotionEffect(new PotionEffect(potion, 200, amplifier, false, showParticles));
             }
