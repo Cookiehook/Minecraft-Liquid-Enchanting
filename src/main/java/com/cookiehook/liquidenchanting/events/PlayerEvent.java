@@ -15,6 +15,8 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Iterator;
 import java.util.List;
@@ -48,6 +50,7 @@ public class PlayerEvent {
     }
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public void toolTipEvent(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         List<String> toolTip = event.getToolTip();
