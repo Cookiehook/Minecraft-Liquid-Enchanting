@@ -1,0 +1,23 @@
+{
+  "type": "liquidenchanting:beacon_recipe",
+  "pattern": [
+    "BSB",
+    "B B",
+    "BTB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "T": {
+      "item": "minecraft:iron_chestplate"
+    }
+  },
+  "result": {
+    "item": "liquidenchanting:liquid_enchanting",
+    "count": 1
+  }
+}
