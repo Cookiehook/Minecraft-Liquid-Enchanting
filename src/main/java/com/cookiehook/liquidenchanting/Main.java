@@ -24,7 +24,7 @@ public class Main {
     @Mod.Instance
     public static Main instance;
 
-    private Logger logger;
+    private static Logger logger;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
@@ -44,10 +44,8 @@ public class Main {
         MinecraftForge.EVENT_BUS.register(new PlayerEvent());
     }
 
-
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         RegistryHandler.printRegisteredPotions(logger);
     }
-
 }

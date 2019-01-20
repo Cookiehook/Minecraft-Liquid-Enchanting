@@ -30,6 +30,13 @@ import java.util.List;
 
 public class PlayerEvent {
 
+    /**
+     * This method is called every time the player is ticked by the server.
+     * Each time it does, we:
+     *      Get a list of all the armor the player is wearing
+     *      Get a list of all allowed potions applied to that armor
+     *      Apply each potion to the player
+     */
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
         EntityLivingBase player = event.player;
@@ -41,7 +48,7 @@ public class PlayerEvent {
 
             for (PotionEffect potionEffect : potionEffects) {
                 //Instant potion effects given every tick would render players immortal or instantly dead.
-                //Disabling them here for that reason.
+                //Configuring them here for that reason.
                 if (!potionEffect.getPotion().isInstant() || Config.instantEffectEnabled) {
                     addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
                 }
@@ -49,6 +56,14 @@ public class PlayerEvent {
         }
     }
 
+    /**
+     * This method is called every time an entity is attacked.
+     * Each time it does we:
+     *      Check that the weapon is a Sword, Tool or Hoe, to stop people slapping each other with potion bottles.
+     *      Get a list of all allowed potions on that weapon.
+     *      Apply those potion effects to the attacked entity
+     * @param event
+     */
     @SubscribeEvent
     public void AttackEntityEvent(AttackEntityEvent event) {
         Entity target = event.getTarget();
@@ -56,12 +71,14 @@ public class PlayerEvent {
         ItemStack weapon = player.getHeldItemMainhand();
         Item item = weapon.getItem();
 
+        // Prevents players using vanilla potions as weapons, as they have the same NBT structure as our weapons.
         if (item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(weapon.getTagCompound());
 
             if (target instanceof EntityLivingBase) {
                 for (PotionEffect potionEffect : potionEffects) {
                     Potion potion = potionEffect.getPotion();
+                    // Apply the effect for 1 tick if it's instant, or the configured weapon time if not.
                     int duration = potion.isInstant() ? 1 : Config.weaponEffectTime;
                     ((EntityLivingBase) target).addPotionEffect(new PotionEffect(potion, duration, potionEffect.getAmplifier(), false, true));
                 }
@@ -69,6 +86,13 @@ public class PlayerEvent {
         }
     }
 
+    /**
+     * This is called every time we mouse over an item in inventories (player, chest, hopper etc..)
+     * Each time it does we:
+     *      Check that the chosen itemstack is the right type
+     *      Get all allowed potion effects from that item.
+     *      Add a coloured tooltip to the itemstack, converting the amplifier to roman numerals.
+     */
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void toolTipEvent(ItemTooltipEvent event) {
@@ -86,8 +110,9 @@ public class PlayerEvent {
                     TextFormatting textFormat = potionEffect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE;
                     String potionName = potionEffect.getPotion().getName();
                     if (potionEffect.getAmplifier() > 0) {
-                        level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1);
+                        level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1); // +1 as amplifier is zero-indexed. A Level II potion has an amplifier of 1.
                     }
+                    // Using the I18n library allows the tooltip to be translated if a translation has been provided.
                     toolTip.add(1, textFormat + I18n.format(potionName) + " " + level);
                 }
             }
@@ -96,6 +121,14 @@ public class PlayerEvent {
 
     /**
      * Returns a list of PotionEffects by interrogating the input NBT tag and PotionType registry.
+     * This is where we actually configure what types of potions are allowed.
+     * The crafting methods are very simple, copying over the NBT tags without checking them. It has to be this way, as I can't
+     * have any clue what other mods might due with their NBT tags, and I don't want to strip any functionality by being selective
+     * in what NBT tags I copy.
+     *
+     * Whenever a potion effect is needed to be applied, it calls this method. This then checks config files to see what
+     * potions / combinations are currently allowed. It then passes back a list of all potions that were on that item,
+     * minus anything prohibited by the config file.
      *
      * @param nbtTagCompound
      * @return
@@ -103,13 +136,13 @@ public class PlayerEvent {
     private List<PotionEffect> getPotionTypeFromNBT(NBTTagCompound nbtTagCompound) {
         List<PotionEffect> potionEffects = new ArrayList<PotionEffect>();
 
-        if (nbtTagCompound != null) {
+        if (nbtTagCompound != null) {  // Avoids NullPointerException when going for un-enchanted gear.
             String potionName = nbtTagCompound.getString("Potion");
             if (!potionName.equals("") && PotionType.getPotionTypeForName(potionName) != null) {
                 potionEffects.addAll(PotionType.getPotionTypeForName(potionName).getEffects());
             }
 
-            if (Config.combinedCraftingEnabled) {
+            if (Config.combinedCraftingEnabled) { // This tag type is used only by "combined" potion mods.
                 NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
                 for (NBTBase tag : customPotionList) {
                     potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));

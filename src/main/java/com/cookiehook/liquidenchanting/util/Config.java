@@ -16,11 +16,6 @@ public class Config {
         syncConfig();
     }
 
-    /***
-     * Reads / Creates the configuration file.
-     * All options are stored in a dictionary, with their name as key and boolean value as the value. This map
-     * is used when checking recipe matches during crafting.
-     */
     private static void syncConfig() {
         String category;
         category = "General";

@@ -76,12 +76,20 @@ public class BeaconRecipeFactory implements IRecipeFactory {
             }
         }
 
+        /**
+         * Checks whether the items in the crafting grid match any recipes.
+         * Pretty much a copy of the vanilla implementation, except the central item is only checked for type of item.
+         * This makes the recipe intentionally ambiguous, allowing cross-mod compatibility.
+         */
         @Override
         protected boolean checkMatch(InventoryCrafting inv, int startX, int startY, boolean mirror) {
             for (int x = 0; x < inv.getWidth(); x++) {
                 for (int y = 0; y < inv.getHeight(); y++) {
 
                     if (x == 1 && y == 1) {
+                        // Only check that the central item is of the correct type, allows compatibility with any other
+                        // mods that add new items that extend these vanilla base classes.
+                        // Works very well with armor, hit and miss with tools.
                         Item centreItem = inv.getStackInRowAndColumn(x, y).getItem();
                         if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
                             continue;
