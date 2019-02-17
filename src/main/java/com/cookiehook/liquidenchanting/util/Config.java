@@ -20,7 +20,8 @@ public class Config {
         String category;
         category = "General";
         config.addCustomCategoryComment(category, "General configuration for " + Reference.MOD_NAME);
-        weaponEffectTime = config.getInt("Weapon Effect Time", category, 10, 1, 60, "How long (in seconds) to effect entities when hit with a potion fused weapon");
+        weaponEffectTime = config.getInt("Weapon Effect Time", category, 10, 1, 60,
+                                "How long (in seconds) to effect entities when hit with a potion fused weapon") * 20;
         combinedCraftingEnabled = config.getBoolean("Enable Combined Crafting", category, false, "Set to True to allow combined potions to be used as ingredients");
         instantEffectEnabled = config.getBoolean("Enable Instant Effect", category, false, "Set to True to allow 'instant' effects like health / damage to be applied to armor. " +
                 "Warning: This is probably overpowered, and certainly hilarious");
