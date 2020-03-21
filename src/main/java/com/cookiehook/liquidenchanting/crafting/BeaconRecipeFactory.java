@@ -2,12 +2,14 @@ package com.cookiehook.liquidenchanting.crafting;
 
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
@@ -50,11 +52,13 @@ public class BeaconRecipeFactory implements IRecipeFactory {
             NBTTagCompound targetPotionTag = new NBTTagCompound();
             NBTTagString potionName = new NBTTagString(getPotionFromItem(recipeIndicator));
             targetPotionTag.setTag("Potion", potionName);
+            targetPotionTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
 
             // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
             NBTTagCompound inputTag = centreItemStack.getTagCompound();
             if (inputTag != null) {
                 inputTag.setTag("Potion", potionName);
+                inputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
                 output.setTagCompound(inputTag);
             } else {
                 output.setTagCompound(targetPotionTag);
@@ -87,11 +91,9 @@ public class BeaconRecipeFactory implements IRecipeFactory {
                 for (int y = 0; y < inv.getHeight(); y++) {
 
                     if (x == 1 && y == 1) {
-                        // Only check that the central item is of the correct type, allows compatibility with any other
-                        // mods that add new items that extend these vanilla base classes.
-                        // Works very well with armor, hit and miss with tools.
-                        Item centreItem = inv.getStackInRowAndColumn(x, y).getItem();
-                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
+                        ItemStack centreItem = inv.getStackInRowAndColumn(x, y);
+                        // Try to do a level 30 enchantment on the item. If successful, this is a valid item to Liquid Enchant
+                        if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() > 0) {
                             continue;
                         } else {
                             return false;

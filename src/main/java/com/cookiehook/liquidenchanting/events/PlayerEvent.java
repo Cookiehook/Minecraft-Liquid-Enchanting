@@ -69,10 +69,9 @@ public class PlayerEvent {
         Entity target = event.getTarget();
         EntityPlayer player = event.getEntityPlayer();
         ItemStack weapon = player.getHeldItemMainhand();
-        Item item = weapon.getItem();
 
-        // Prevents players using vanilla potions as weapons, as they have the same NBT structure as our weapons.
-        if (item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
+        // Check that the item we're hitting with is one our mod has applied a tag to.
+        if ((weapon.getTagCompound() != null) && (weapon.getTagCompound().getTag("liquid_enchanted") != null)) {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(weapon.getTagCompound());
 
             if (target instanceof EntityLivingBase) {
@@ -100,8 +99,8 @@ public class PlayerEvent {
         Item item = itemStack.getItem();
         List<String> toolTip = event.getToolTip();
 
-        // Let's not accidentally muck around with every item in the game OK?
-        if (item instanceof ItemArmor || item instanceof ItemSword || item instanceof ItemTool || item instanceof ItemHoe) {
+        // Check that the item we're changing is one our mod has applied a tag to.
+        if ((itemStack.getTagCompound() != null) && (itemStack.getTagCompound().getTag("liquid_enchanted") != null)) {
             List<PotionEffect> potionEffects = getPotionTypeFromNBT(itemStack.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {

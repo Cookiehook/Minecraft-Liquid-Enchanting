@@ -2,11 +2,13 @@ package com.cookiehook.liquidenchanting.crafting;
 
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
@@ -53,8 +55,10 @@ public class PotionRecipeFactory implements IRecipeFactory {
             // Potion combination mods change the display name of the "combined" potion using NBT tags. We don't want that
             // name on our armor piece, so we strip any display tags from the incoming potion.
             targetPotionTag.removeTag("display");
+            targetPotionTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
             if (inputTag != null) {
                 inputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
+                inputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
                 output.setTagCompound(inputTag);
             } else {
                 output.setTagCompound(targetPotionTag);
@@ -80,8 +84,9 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 for (int x = 0; x < inventory.getWidth(); x++) {
                     for (int y = 0; y < inventory.getHeight(); y++) {
                         if (x == 1 && y == 1) {
-                            Item centreItem = inventory.getStackInRowAndColumn(x, y).getItem();
-                            if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
+                            ItemStack centreItem = inventory.getStackInRowAndColumn(x, y);
+                            // Try to do a level 30 enchantment on the item. If successful, this is a valid item to Liquid Enchant
+                            if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() > 0) {
                                 continue;
                             } else {
                                 return false;
