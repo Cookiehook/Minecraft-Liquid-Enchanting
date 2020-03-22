@@ -1,5 +1,7 @@
 package com.cookiehook.liquidenchanting.crafting;
 
+import com.cookiehook.liquidenchanting.util.Config;
+import com.cookiehook.liquidenchanting.util.CustomPotionHelper;
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -71,51 +73,59 @@ public class PotionRecipeFactory implements IRecipeFactory {
          * This is called by the vanilla crafting mechanics to determine whether the ingredients in the crafting table
          * match any given recipe. Returning false means the ingredients weren't a match, true means they were.
          * If true is returned, then getCraftingResult can be called to determine what item will be crafted.
-         *
-         * This is predominantly a copy / paste from the vanilla implementation. We need most of the checks
-         * from the vanilla, but need a special check for the centre slot. As such, we can't just call the super.
          */
         @Override
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
             NBTTagCompound targetPotion = inventory.getStackInRowAndColumn(0, 0).getTagCompound();
+            ItemStack centreItem = inventory.getStackInRowAndColumn(1, 1);
+
+            // Check the top-left item is a potion.
             if (targetPotion == null) {
                 return false;
-            } else {
-                for (int x = 0; x < inventory.getWidth(); x++) {
-                    for (int y = 0; y < inventory.getHeight(); y++) {
-                        if (x == 1 && y == 1) {
-                            ItemStack centreItem = inventory.getStackInRowAndColumn(x, y);
-                            // Try to do a level 30 enchantment on the item. If successful, this is a valid item to Liquid Enchant
-                            if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() > 0) {
-                                continue;
-                            } else {
-                                return false;
-                            }
-                        }
-                        int subX = x - startX;
-                        int subY = y - startY;
-                        Ingredient target = Ingredient.EMPTY;
+            }
 
-                        if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-                            if (mirror) {
-                                target = input.get(width - subX - 1 + subY * width);
-                            } else {
-                                target = input.get(subX + subY * width);
-                            }
-                        }
-                        if (!target.apply(inventory.getStackInRowAndColumn(x, y))) {
-                            return false;
-                        }
-                        //Check that the potion on the current item is the same as the first potion.
-                        NBTTagCompound currentPotion = inventory.getStackInRowAndColumn(x, y).getTagCompound();
-                        if (currentPotion == null || !currentPotion.equals(targetPotion)) {
-                            return false;
+            // Prevent instant potions being crafted onto armor if disabled in the config
+            boolean potionIsInstant = CustomPotionHelper.getPotionTypeFromNBT(targetPotion).get(0).getPotion().isInstant();
+            if (centreItem.getItem() instanceof ItemArmor && potionIsInstant && !Config.instantEffectEnabled) {
+                return false;
+            }
+
+            // Centre item must be enchantable with level 30 enchantment. Allows other mods to build their classes
+            // however they want. If the item supports regular enchantments, we support liquid enchantment.
+            if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() == 0) {
+                return false;
+            }
+
+            // This is predominantly a copy / paste from the vanilla implementation.
+            // Difference being skip the centre item, and check the NBT tags all match each other.
+            for (int x = 0; x < inventory.getWidth(); x++) {
+                for (int y = 0; y < inventory.getHeight(); y++) {
+                    if (x == 1 && y == 1) {
+                        continue;  // Don't check the centre item here, we already did that above.
+                    }
+                    int subX = x - startX;
+                    int subY = y - startY;
+                    Ingredient target = Ingredient.EMPTY;
+
+                    if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
+                        if (mirror) {
+                            target = input.get(width - subX - 1 + subY * width);
+                        } else {
+                            target = input.get(subX + subY * width);
                         }
                     }
+                    if (!target.apply(inventory.getStackInRowAndColumn(x, y))) {
+                        return false;
+                    }
+                    //Check that the potion on the current item is the same as the first potion.
+                    NBTTagCompound currentPotion = inventory.getStackInRowAndColumn(x, y).getTagCompound();
+                    if (currentPotion == null || !currentPotion.equals(targetPotion)) {
+                        return false;
+                    }
                 }
-
-                return true;
             }
+
+            return true;
         }
     }
 }
