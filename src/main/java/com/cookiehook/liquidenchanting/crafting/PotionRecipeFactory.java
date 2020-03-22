@@ -59,9 +59,12 @@ public class PotionRecipeFactory implements IRecipeFactory {
             targetPotionTag.removeTag("display");
             targetPotionTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
             if (inputTag != null) {
-                inputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
-                inputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
-                output.setTagCompound(inputTag);
+                // We shouldn't change the inputTag, as if the user removes the original item from the crafting table
+                // without crafting, the potion effect is applied as we've set it here. Hence, create a copy.
+                NBTTagCompound newInputTag = inputTag.copy();
+                newInputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
+                newInputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
+                output.setTagCompound(newInputTag);
             } else {
                 output.setTagCompound(targetPotionTag);
             }

@@ -57,9 +57,12 @@ public class BeaconRecipeFactory implements IRecipeFactory {
             // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
             NBTTagCompound inputTag = centreItemStack.getTagCompound();
             if (inputTag != null) {
-                inputTag.setTag("Potion", potionName);
-                inputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
-                output.setTagCompound(inputTag);
+                // We shouldn't change the inputTag, as if the user removes the original item from the crafting table
+                // without crafting, the potion effect is applied as we've set it here. Hence, create a copy.
+                NBTTagCompound newInputTag = inputTag.copy();
+                newInputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
+                newInputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
+                output.setTagCompound(newInputTag);
             } else {
                 output.setTagCompound(targetPotionTag);
             }
