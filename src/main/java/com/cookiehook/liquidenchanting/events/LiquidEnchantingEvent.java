@@ -8,11 +8,15 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -23,6 +27,25 @@ import java.util.Iterator;
 import java.util.List;
 
 public class LiquidEnchantingEvent {
+
+    private ItemStack bow;
+
+    @SubscribeEvent
+    public void ArrowLooseEvent(ArrowLooseEvent event) {
+        this.bow = event.getBow();
+    }
+
+
+    @SubscribeEvent
+    public void EntityJoinWorldEvent(EntityJoinWorldEvent event) {
+        Entity arrow = event.getEntity();
+        if (arrow instanceof EntityArrow
+                && this.bow != null
+                && this.bow.getTagCompound() != null) {
+            ((EntityTippedArrow) arrow).readEntityFromNBT(this.bow.getTagCompound());
+            this.bow = null;
+        }
+    }
 
     /*
      * This method is called evey time a living entity (any mob) is hurt.
@@ -63,9 +86,9 @@ public class LiquidEnchantingEvent {
     /**
      * This method is called every time the player is ticked by the server.
      * Each time it does, we:
-     *      Get a list of all the armor the player is wearing
-     *      Get a list of all allowed potions applied to that armor
-     *      Apply each potion to the player
+     * Get a list of all the armor the player is wearing
+     * Get a list of all allowed potions applied to that armor
+     * Apply each potion to the player
      */
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
@@ -85,9 +108,9 @@ public class LiquidEnchantingEvent {
     /**
      * This is called every time we mouse over an item in inventories (player, chest, hopper etc..)
      * Each time it does we:
-     *      Check that the chosen itemstack is the right type
-     *      Get all allowed potion effects from that item.
-     *      Add a coloured tooltip to the itemstack, converting the amplifier to roman numerals.
+     * Check that the chosen itemstack is the right type
+     * Get all allowed potion effects from that item.
+     * Add a coloured tooltip to the itemstack, converting the amplifier to roman numerals.
      */
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
