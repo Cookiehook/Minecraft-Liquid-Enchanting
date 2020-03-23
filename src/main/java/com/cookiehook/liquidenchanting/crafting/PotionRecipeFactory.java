@@ -52,6 +52,7 @@ public class PotionRecipeFactory implements IRecipeFactory {
             NBTTagCompound outputTag = outputItemStack.getTagCompound();
             NBTTagCompound potionTag = inventory.getStackInSlot(0).getTagCompound().copy();
             potionTag.setBoolean("liquid_enchanted", true);
+            potionTag.removeTag("display");  // Remove the custom name added by PotionCraft combined potions
 
             if (outputTag != null) {
                 outputTag.merge(potionTag);
@@ -60,10 +61,18 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 outputItemStack.setTagCompound(outputTag);
             }
 
-            // Remove liquid enchantments from output if the potion used was water
-            if (potionTag.getString("Potion").equals("minecraft:water")) {
+            // Remove liquid enchantments from output if the input potion has no effects
+            if (LiquidEnchantmentHelper.getPotionTypeFromNBT(potionTag).size() == 0) {
+                // Remove vanilla potion tags
                 outputTag.removeTag("Potion");
                 outputTag.removeTag("liquid_enchanted");
+
+                // Remove custom potion tags
+                if (outputTag.getBoolean("CustomPotionEffects")) {
+                    outputTag.removeTag("CustomPotionEffects");
+                    outputTag.removeTag("CustomPotionColor");
+                    outputTag.removeTag("danger");
+                }
             }
 
             // If the tag now has nothing in it, remove entirely, to remove the vanilla NBT Tooltip
