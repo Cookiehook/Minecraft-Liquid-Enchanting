@@ -1,7 +1,7 @@
 package com.cookiehook.liquidenchanting.events;
 
 import com.cookiehook.liquidenchanting.util.Config;
-import com.cookiehook.liquidenchanting.util.CustomPotionHelper;
+import com.cookiehook.liquidenchanting.util.LiquidEnchantmentHelper;
 import com.cookiehook.liquidenchanting.util.RomanNumber;
 import com.google.common.collect.Lists;
 import net.minecraft.client.resources.I18n;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.List;
 
-public class PlayerEvent {
+public class LiquidEnchantingEvent {
 
     /*
      * This method is called evey time a living entity (any mob) is hurt.
@@ -48,8 +48,8 @@ public class PlayerEvent {
         }
 
         // Check that the item we're hitting with has been crafted using our crafting manager
-        if ((weapon.getTagCompound() != null) && (weapon.getTagCompound().getTag("liquid_enchanted") != null)) {
-            List<PotionEffect> potionEffects = CustomPotionHelper.getPotionTypeFromNBT(weapon.getTagCompound());
+        if ((weapon.getTagCompound() != null) && (weapon.getTagCompound().getBoolean("liquid_enchanted"))) {
+            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(weapon.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {
                 Potion potion = potionEffect.getPotion();
@@ -74,10 +74,10 @@ public class PlayerEvent {
         List<ItemStack> armorStack = Lists.newArrayList(armor);
 
         for (ItemStack itemstack : armorStack) {  //Loops through each armor slot
-            List<PotionEffect> potionEffects = CustomPotionHelper.getPotionTypeFromNBT(itemstack.getTagCompound());
+            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemstack.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {
-                CustomPotionHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
+                LiquidEnchantmentHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
             }
         }
     }
@@ -97,8 +97,8 @@ public class PlayerEvent {
 
         // Check that the item we're viewing has been crafted using our crafting manager
         // Without this check, we double up the potion tags on potions.
-        if ((itemStack.getTagCompound() != null) && (itemStack.getTagCompound().getTag("liquid_enchanted") != null)) {
-            List<PotionEffect> potionEffects = CustomPotionHelper.getPotionTypeFromNBT(itemStack.getTagCompound());
+        if ((itemStack.getTagCompound() != null) && (itemStack.getTagCompound().getBoolean("liquid_enchanted"))) {
+            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemStack.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {
                 String level = "";

@@ -1,7 +1,7 @@
 package com.cookiehook.liquidenchanting.crafting;
 
 import com.cookiehook.liquidenchanting.util.Config;
-import com.cookiehook.liquidenchanting.util.CustomPotionHelper;
+import com.cookiehook.liquidenchanting.util.LiquidEnchantmentHelper;
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,7 +10,7 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
@@ -19,6 +19,7 @@ import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class PotionRecipeFactory implements IRecipeFactory {
     @Override
@@ -47,29 +48,29 @@ public class PotionRecipeFactory implements IRecipeFactory {
         @Override
         @Nonnull
         public ItemStack getCraftingResult(@Nonnull InventoryCrafting inventory) {
-            //Get the input item in the central slot, which will always be the sword / armor.
-            ItemStack centreItemStack = inventory.getStackInSlot(4);
-            ItemStack output = centreItemStack.copy();
+            ItemStack outputItemStack = inventory.getStackInSlot(4).copy();
+            NBTTagCompound outputTag = outputItemStack.getTagCompound();
+            NBTTagCompound potionTag = inventory.getStackInSlot(0).getTagCompound().copy();
+            potionTag.setBoolean("liquid_enchanted", true);
 
-            // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
-            NBTTagCompound inputTag = centreItemStack.getTagCompound();
-            NBTTagCompound targetPotionTag = inventory.getStackInSlot(0).getTagCompound().copy();
-            // Potion combination mods change the display name of the "combined" potion using NBT tags. We don't want that
-            // name on our armor piece, so we strip any display tags from the incoming potion.
-            targetPotionTag.removeTag("display");
-            targetPotionTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
-            if (inputTag != null) {
-                // We shouldn't change the inputTag, as if the user removes the original item from the crafting table
-                // without crafting, the potion effect is applied as we've set it here. Hence, create a copy.
-                NBTTagCompound newInputTag = inputTag.copy();
-                newInputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
-                newInputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
-                output.setTagCompound(newInputTag);
+            if (outputTag != null) {
+                outputTag.merge(potionTag);
             } else {
-                output.setTagCompound(targetPotionTag);
+                outputTag = potionTag;
+                outputItemStack.setTagCompound(outputTag);
             }
 
-            return output;
+            // Remove liquid enchantments from output if the potion used was water
+            if (potionTag.getString("Potion").equals("minecraft:water")) {
+                outputTag.removeTag("Potion");
+                outputTag.removeTag("liquid_enchanted");
+            }
+
+            // If the tag now has nothing in it, remove entirely, to remove the vanilla NBT Tooltip
+            if (outputTag.getSize() == 0) {
+                outputItemStack.setTagCompound(null);
+            }
+            return outputItemStack;
         }
 
         /**
@@ -79,18 +80,24 @@ public class PotionRecipeFactory implements IRecipeFactory {
          */
         @Override
         protected boolean checkMatch(InventoryCrafting inventory, int startX, int startY, boolean mirror) {
-            NBTTagCompound targetPotion = inventory.getStackInRowAndColumn(0, 0).getTagCompound();
+            NBTTagCompound initialPotion = inventory.getStackInRowAndColumn(0, 0).getTagCompound();
             ItemStack centreItem = inventory.getStackInRowAndColumn(1, 1);
 
-            // Check the top-left item is a potion.
-            if (targetPotion == null) {
+            // Check the top-left item has an NBT tag. Likely unnecessary, but if someone manages to get a potionItem
+            // without an NBT tag, the call to getTagCompound.copy() in getCraftingResult will raise a NullPointerException.
+            // If we don't have an NBT tag, we can't get potion effects, so the recipe will be a failure anyway.
+            if (initialPotion == null) {
                 return false;
             }
 
             // Prevent instant potions being crafted onto armor if disabled in the config
-            boolean potionIsInstant = CustomPotionHelper.getPotionTypeFromNBT(targetPotion).get(0).getPotion().isInstant();
-            if (centreItem.getItem() instanceof ItemArmor && potionIsInstant && !Config.instantEffectEnabled) {
-                return false;
+            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(initialPotion);
+            for (PotionEffect potionEffect : potionEffects) {
+                if (centreItem.getItem() instanceof ItemArmor
+                        && potionEffect.getPotion().isInstant()
+                        && !Config.instantEffectEnabled) {
+                    return false;
+                }
             }
 
             // Centre item must be enchantable with level 30 enchantment. Allows other mods to build their classes
@@ -117,12 +124,13 @@ public class PotionRecipeFactory implements IRecipeFactory {
                             target = input.get(subX + subY * width);
                         }
                     }
+                    // Check the ingredient in the recipe matches that in the crafting table slot
                     if (!target.apply(inventory.getStackInRowAndColumn(x, y))) {
                         return false;
                     }
                     //Check that the potion on the current item is the same as the first potion.
                     NBTTagCompound currentPotion = inventory.getStackInRowAndColumn(x, y).getTagCompound();
-                    if (currentPotion == null || !currentPotion.equals(targetPotion)) {
+                    if (currentPotion == null || !currentPotion.equals(initialPotion)) {
                         return false;
                     }
                 }

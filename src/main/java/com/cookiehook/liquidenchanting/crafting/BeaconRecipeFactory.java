@@ -9,7 +9,6 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
@@ -46,27 +45,20 @@ public class BeaconRecipeFactory implements IRecipeFactory {
             //Get the input item in the central slot, which will always be the sword / armor.
             ItemStack centreItemStack = inventory.getStackInSlot(4);
             Item recipeIndicator = inventory.getStackInSlot(7).getItem();
-            ItemStack output = centreItemStack.copy();
+            ItemStack outputItemStack = centreItemStack.copy();
+            NBTTagCompound outputTag = outputItemStack.getTagCompound();
 
             //Construct potion NBT tag for the appropriate beacon effect
-            NBTTagCompound targetPotionTag = new NBTTagCompound();
-            NBTTagString potionName = new NBTTagString(getPotionFromItem(recipeIndicator));
-            targetPotionTag.setTag("Potion", potionName);
-            targetPotionTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
+            NBTTagCompound potionTag = new NBTTagCompound();
+            potionTag.setTag("Potion", new NBTTagString(getPotionFromItem(recipeIndicator)));
+            potionTag.setBoolean("liquid_enchanted", true); // Used in toolTipEvent
 
-            // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
-            NBTTagCompound inputTag = centreItemStack.getTagCompound();
-            if (inputTag != null) {
-                // We shouldn't change the inputTag, as if the user removes the original item from the crafting table
-                // without crafting, the potion effect is applied as we've set it here. Hence, create a copy.
-                NBTTagCompound newInputTag = inputTag.copy();
-                newInputTag.setTag("Potion", targetPotionTag.getTag("Potion"));
-                newInputTag.setTag("liquid_enchanted", new NBTTagInt(1)); // Used in toolTipEvent
-                output.setTagCompound(newInputTag);
+            if (outputTag != null) {
+                outputTag.merge(potionTag);
             } else {
-                output.setTagCompound(targetPotionTag);
+                outputItemStack.setTagCompound(potionTag);
             }
-            return output;
+            return outputItemStack;
         }
 
         private String getPotionFromItem(Item item) {

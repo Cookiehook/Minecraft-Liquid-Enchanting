@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomPotionHelper {
+public class LiquidEnchantmentHelper {
 
     /**
      * Returns a list of PotionEffects by interrogating the input NBT tag and PotionType registry.
@@ -31,7 +31,7 @@ public class CustomPotionHelper {
     public static List<PotionEffect> getPotionTypeFromNBT(NBTTagCompound nbtTagCompound) {
         List<PotionEffect> potionEffects = new ArrayList<PotionEffect>();
 
-        if (nbtTagCompound != null) {  // Avoids NullPointerException when going for un-enchanted gear.
+        if (nbtTagCompound != null) {  // Avoids NullPointerException when going for un-enchanted gear with tooltips.
             String potionName = nbtTagCompound.getString("Potion");
             if (!potionName.equals("") && PotionType.getPotionTypeForName(potionName) != null) {
                 potionEffects.addAll(PotionType.getPotionTypeForName(potionName).getEffects());
