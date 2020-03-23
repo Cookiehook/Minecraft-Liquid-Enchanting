@@ -10,9 +10,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityTippedArrow;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBow;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -32,17 +38,17 @@ public class LiquidEnchantingEvent {
 
     @SubscribeEvent
     public void ArrowLooseEvent(ArrowLooseEvent event) {
+        // Save the bow actually used to fire the arrow. This is used later when the arrow is spawned.
         this.bow = event.getBow();
     }
-
 
     @SubscribeEvent
     public void EntityJoinWorldEvent(EntityJoinWorldEvent event) {
         Entity arrow = event.getEntity();
-        if (arrow instanceof EntityArrow
-                && this.bow != null
-                && this.bow.getTagCompound() != null) {
-            ((EntityTippedArrow) arrow).readEntityFromNBT(this.bow.getTagCompound());
+        if (arrow instanceof EntityArrow && this.bow != null && this.bow.getTagCompound() != null) {
+            // Save the potion effect from the bow saved earlier onto the arrow entity
+            NBTTagCompound tag = arrow.getEntityData();
+            tag.merge(this.bow.getTagCompound());
             this.bow = null;
         }
     }
@@ -56,24 +62,44 @@ public class LiquidEnchantingEvent {
      */
     @SubscribeEvent
     public void LivingHurtEvent(LivingHurtEvent event) {
-        Entity source = event.getSource().getTrueSource();
+        DamageSource source = event.getSource();
         Entity target = event.getEntity();
+        List<PotionEffect> potionEffects = null;
 
-        // Exit if damage is not player-caused (falling, fire, starvation, magic etc)
-        if (!(source instanceof EntityPlayer)) {
-            return;
+        // Entity is being attacked by a projectile
+        if (source instanceof EntityDamageSourceIndirect) {
+            Entity projectile = source.getImmediateSource();
+            if (!(projectile instanceof EntityTippedArrow)) {
+                return;
+            }
+            // Read the NBT data we saved from the bow, then parse to extract PotionEffects
+            NBTTagCompound potions = projectile.getEntityData();
+            if (potions.getSize() != 0) {
+                potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(potions);
+            }
+        }
+        // Entity is being attacked by player throwing hands
+        else if (source instanceof EntityDamageSource) {
+            Entity attacker = source.getTrueSource();
+
+            // Exit if damage is not player-caused (falling, fire, starvation, magic etc)
+            if (!(attacker instanceof EntityPlayer)) {
+                return;
+            }
+
+            //Don't apply potion effects if we're slapping someone with armor or bow. That would be silly.
+            ItemStack weapon = ((EntityPlayer) attacker).getHeldItemMainhand();
+            if (weapon.getItem() instanceof ItemArmor || weapon.getItem() instanceof ItemBow) {
+                return;
+            }
+
+            // Check that the item we're hitting with has been crafted using our crafting manager
+            if ((weapon.getTagCompound() != null) && (weapon.getTagCompound().getBoolean("liquid_enchanted"))) {
+                potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(weapon.getTagCompound());
+            }
         }
 
-        //Don't apply potion effects if we're slapping someone with armor. That would be silly.
-        ItemStack weapon = ((EntityPlayer) source).getHeldItemMainhand();
-        if (weapon.getItem() instanceof ItemArmor) {
-            return;
-        }
-
-        // Check that the item we're hitting with has been crafted using our crafting manager
-        if ((weapon.getTagCompound() != null) && (weapon.getTagCompound().getBoolean("liquid_enchanted"))) {
-            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(weapon.getTagCompound());
-
+        if (potionEffects != null) {
             for (PotionEffect potionEffect : potionEffects) {
                 Potion potion = potionEffect.getPotion();
                 // Apply the effect for 1 tick if it's instant, or the configured weapon time if not.
