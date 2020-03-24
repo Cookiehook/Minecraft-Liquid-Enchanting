@@ -9,9 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemBow;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -86,9 +84,11 @@ public class LiquidEnchantingEvent {
                 return;
             }
 
-            //Don't apply potion effects if we're slapping someone with armor or bow. That would be silly.
+            //Don't apply potion effects if we're slapping someone with defensive items. That would be silly
             ItemStack weapon = ((EntityPlayer) attacker).getHeldItemMainhand();
-            if (weapon.getItem() instanceof ItemArmor || weapon.getItem() instanceof ItemBow) {
+            Item weaponItem = weapon.getItem();
+            if (weaponItem instanceof ItemArmor || weaponItem instanceof ItemBow
+                    || weaponItem instanceof ItemShield || weaponItem instanceof ItemElytra) {
                 return;
             }
 
@@ -121,8 +121,30 @@ public class LiquidEnchantingEvent {
         Iterator<ItemStack> armor = player.getArmorInventoryList().iterator();
         List<ItemStack> armorStack = Lists.newArrayList(armor);
 
-        for (ItemStack itemstack : armorStack) {  //Loops through each armor slot
+        //Loops through each armor slot, applying any worn enchantments
+        for (ItemStack itemstack : armorStack) {
             List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemstack.getTagCompound());
+
+            for (PotionEffect potionEffect : potionEffects) {
+                LiquidEnchantmentHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
+            }
+        }
+
+        // Check what the player is holding in either hand
+        ItemStack mainHand = player.getHeldItemMainhand();
+        ItemStack offHand = player.getHeldItemOffhand();
+        ItemStack shield = null;
+
+        // Check if either is a shield, save it if so.
+        if (mainHand.getItem() instanceof ItemShield) {
+            shield = mainHand;
+        } else if (offHand.getItem() instanceof ItemShield) {
+            shield = offHand;
+        }
+
+        // If a shield was being held, apply potion effects to player
+        if (shield != null) {
+            List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(shield.getTagCompound());
 
             for (PotionEffect potionEffect : potionEffects) {
                 LiquidEnchantmentHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
