@@ -9,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -69,7 +68,7 @@ public class LiquidEnchantingEvent {
         // Entity is being attacked by a projectile
         if (source instanceof EntityDamageSourceIndirect) {
             Entity projectile = source.getImmediateSource();
-            if (!(projectile instanceof EntityTippedArrow)) {
+            if (!(projectile instanceof EntityArrow)) {
                 return;
             }
             // Read the NBT data we saved from the bow, then parse to extract PotionEffects
