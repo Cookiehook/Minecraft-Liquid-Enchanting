@@ -78,7 +78,7 @@ public class BeaconRecipeFactory implements IRecipeFactory {
 
         /**
          * Checks whether the items in the crafting grid match any recipes.
-         * Pretty much a copy of the vanilla implementation, except the central item is only checked for type of item.
+         * Pretty much a copy of the vanilla implementation, except the central item is only checked for enchantibility
          * This makes the recipe intentionally ambiguous, allowing cross-mod compatibility.
          */
         @Override
