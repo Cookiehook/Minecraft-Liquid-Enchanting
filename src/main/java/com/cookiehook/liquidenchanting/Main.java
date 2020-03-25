@@ -1,6 +1,6 @@
 package com.cookiehook.liquidenchanting;
 
-import com.cookiehook.liquidenchanting.events.PlayerEvent;
+import com.cookiehook.liquidenchanting.events.LiquidEnchantingEvent;
 import com.cookiehook.liquidenchanting.init.ModItems;
 import com.cookiehook.liquidenchanting.proxy.CommonProxy;
 import com.cookiehook.liquidenchanting.util.Config;
@@ -41,7 +41,7 @@ public class Main {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        MinecraftForge.EVENT_BUS.register(new PlayerEvent());
+        MinecraftForge.EVENT_BUS.register(new LiquidEnchantingEvent());
     }
 
     @EventHandler

@@ -2,9 +2,11 @@ package com.cookiehook.liquidenchanting.crafting;
 
 import com.cookiehook.liquidenchanting.util.Reference;
 import com.google.gson.JsonObject;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,22 +46,20 @@ public class BeaconRecipeFactory implements IRecipeFactory {
             //Get the input item in the central slot, which will always be the sword / armor.
             ItemStack centreItemStack = inventory.getStackInSlot(4);
             Item recipeIndicator = inventory.getStackInSlot(7).getItem();
-            ItemStack output = centreItemStack.copy();
+            ItemStack outputItemStack = centreItemStack.copy();
+            NBTTagCompound outputTag = outputItemStack.getTagCompound();
 
             //Construct potion NBT tag for the appropriate beacon effect
-            NBTTagCompound targetPotionTag = new NBTTagCompound();
-            NBTTagString potionName = new NBTTagString(getPotionFromItem(recipeIndicator));
-            targetPotionTag.setTag("Potion", potionName);
+            NBTTagCompound potionTag = new NBTTagCompound();
+            potionTag.setTag("Potion", new NBTTagString(getPotionFromItem(recipeIndicator)));
+            potionTag.setBoolean("liquid_enchanted", true); // Used in toolTipEvent
 
-            // Calculate incoming item's NBT (used by enchantments in vanilla), add potion tag, and copy to output
-            NBTTagCompound inputTag = centreItemStack.getTagCompound();
-            if (inputTag != null) {
-                inputTag.setTag("Potion", potionName);
-                output.setTagCompound(inputTag);
+            if (outputTag != null) {
+                outputTag.merge(potionTag);
             } else {
-                output.setTagCompound(targetPotionTag);
+                outputItemStack.setTagCompound(potionTag);
             }
-            return output;
+            return outputItemStack;
         }
 
         private String getPotionFromItem(Item item) {
@@ -78,7 +78,7 @@ public class BeaconRecipeFactory implements IRecipeFactory {
 
         /**
          * Checks whether the items in the crafting grid match any recipes.
-         * Pretty much a copy of the vanilla implementation, except the central item is only checked for type of item.
+         * Pretty much a copy of the vanilla implementation, except the central item is only checked for enchantibility
          * This makes the recipe intentionally ambiguous, allowing cross-mod compatibility.
          */
         @Override
@@ -87,11 +87,9 @@ public class BeaconRecipeFactory implements IRecipeFactory {
                 for (int y = 0; y < inv.getHeight(); y++) {
 
                     if (x == 1 && y == 1) {
-                        // Only check that the central item is of the correct type, allows compatibility with any other
-                        // mods that add new items that extend these vanilla base classes.
-                        // Works very well with armor, hit and miss with tools.
-                        Item centreItem = inv.getStackInRowAndColumn(x, y).getItem();
-                        if (centreItem instanceof ItemArmor || centreItem instanceof ItemSword || centreItem instanceof ItemTool || centreItem instanceof ItemHoe) {
+                        ItemStack centreItem = inv.getStackInRowAndColumn(x, y);
+                        // Try to do a level 30 enchantment on the item. If successful, this is a valid item to Liquid Enchant
+                        if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() > 0) {
                             continue;
                         } else {
                             return false;
