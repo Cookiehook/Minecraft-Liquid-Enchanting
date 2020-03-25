@@ -17,6 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -32,6 +33,26 @@ import java.util.List;
 public class LiquidEnchantingEvent {
 
     private ItemStack bow;
+
+    @SubscribeEvent
+    public void renderLivingEvent(RenderLivingEvent.Pre event) {
+        Entity player = event.getEntity();
+        if (event.getEntity() instanceof EntityPlayer) {
+            Iterator<ItemStack> armor = player.getArmorInventoryList().iterator();
+            List<ItemStack> armorStack = Lists.newArrayList(armor);
+
+            //Loops through each armor slot, cancelling the player render if an invisibility item is worn.
+            for (ItemStack itemstack : armorStack) {
+                List<PotionEffect> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemstack.getTagCompound());
+
+                for (PotionEffect potionEffect : potionEffects) {
+                    if (potionEffect.getEffectName().equals("effect.invisibility")) {
+                        event.setCanceled(true);
+                    }
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public void ArrowLooseEvent(ArrowLooseEvent event) {
