@@ -37,11 +37,9 @@ public class LiquidEnchantmentHelper {
                 potionEffects.addAll(PotionType.getPotionTypeForName(potionName).getEffects());
             }
 
-            if (Config.combinedCraftingEnabled) { // This tag type is used only by "combined" potion mods.
-                NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
-                for (NBTBase tag : customPotionList) {
-                    potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
-                }
+            NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
+            for (NBTBase tag : customPotionList) {
+                potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
             }
         }
 

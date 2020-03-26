@@ -110,6 +110,12 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 }
             }
 
+            // If combined potions are disabled, and this is a combined potion, disable crafting
+            if (!Config.combinedCraftingEnabled
+                    && initialPotion.getTagList("CustomPotionEffects", 10).tagCount() != 0) {
+                return false;
+            }
+
             // Centre item must be enchantable with level 30 enchantment. Allows other mods to build their classes
             // however they want. If the item supports regular enchantments, we support liquid enchantment.
             if (EnchantmentHelper.getEnchantmentDatas(30, centreItem, true).size() == 0) {

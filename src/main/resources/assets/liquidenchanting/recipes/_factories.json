@@ -1,6 +1,5 @@
 {
   "recipes": {
-    "potion_imbew": "com.cookiehook.liquidenchanting.crafting.PotionRecipeFactory",
-    "beacon_recipe": "com.cookiehook.liquidenchanting.crafting.BeaconRecipeFactory"
+    "potion_imbew": "com.cookiehook.liquidenchanting.crafting.PotionRecipeFactory"
   }
 }
