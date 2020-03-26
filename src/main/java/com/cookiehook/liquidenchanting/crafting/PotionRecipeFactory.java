@@ -116,6 +116,12 @@ public class PotionRecipeFactory implements IRecipeFactory {
                 return false;
             }
 
+            // Check against maxStackSize makes sure we don't enchant stackable weapons (like throwables), as I can't
+            // get them to apply their effect on impact. Also check that we only have 1 item in case of glitched 0-item stacks.
+            if (centreItem.getMaxStackSize() != 1 || centreItem.getCount() != 1) {
+                return false;
+            }
+
             // This is predominantly a copy / paste from the vanilla implementation.
             // Difference being skip the centre item, and check the NBT tags all match each other.
             for (int x = 0; x < inventory.getWidth(); x++) {
