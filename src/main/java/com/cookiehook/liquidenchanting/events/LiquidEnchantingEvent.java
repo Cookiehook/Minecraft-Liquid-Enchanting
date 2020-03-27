@@ -16,6 +16,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.TickEvent;
@@ -179,7 +180,6 @@ public class LiquidEnchantingEvent {
      * Add a coloured tooltip to the itemstack, converting the amplifier to roman numerals.
      */
     @SubscribeEvent
-//    @SideOnly(Side.CLIENT)
     public void toolTipEvent(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         List<ITextComponent> toolTip = event.getToolTip();
@@ -197,7 +197,7 @@ public class LiquidEnchantingEvent {
                     level = RomanNumber.toRoman(potionEffect.getAmplifier() + 1); // +1 as amplifier is zero-indexed. A Level II potion has an amplifier of 1.
                 }
                 // Using the I18n library allows the tooltip to be translated if a translation has been provided.
-//                toolTip.add(1, textFormat + I18n.format(potionName) + " " + level);
+                toolTip.add(1, new StringTextComponent(textFormat + I18n.format(potionName) + " " + level));
             }
         }
     }
