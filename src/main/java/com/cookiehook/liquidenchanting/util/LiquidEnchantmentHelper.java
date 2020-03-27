@@ -2,54 +2,12 @@ package com.cookiehook.liquidenchanting.util;
 
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.*;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LiquidEnchantmentHelper {
-
-    /**
-     * Returns a list of PotionEffects by interrogating the input NBT tag and PotionType registry.
-     * This is where we actually configure what types of potions are allowed.
-     * The crafting methods are very simple, copying over the NBT tags without checking them. It has to be this way, as I can't
-     * have any clue what other mods might due with their NBT tags, and I don't want to strip any functionality by being selective
-     * in what NBT tags I copy.
-     *
-     * Whenever a potion effect is needed to be applied, it calls this method. This then checks config files to see what
-     * potions / combinations are currently allowed. It then passes back a list of all potions that were on that item,
-     * minus anything prohibited by the config file.
-     *
-     * @param nbtTagCompound
-     */
-    public static List<EffectInstance> getPotionTypeFromNBT(CompoundNBT nbtTagCompound) {
-        List<EffectInstance> potionEffects = new ArrayList<EffectInstance>();
-
-
-        if (nbtTagCompound != null) {  // Avoids NullPointerException when going for un-enchanted gear with tooltips.
-            String potionName = nbtTagCompound.getString("Potion");
-            if (!potionName.equals("") && Potion.getPotionTypeForName(potionName) != null) {
-                potionEffects.addAll(Potion.getPotionTypeForName(potionName).getEffects());
-            }
-
-            PotionUtils.addCustomPotionEffectToList(nbtTagCompound, potionEffects);
-        }
-
-//        //Removes any effects which were configured as "disabled" from the list to be returned.
-//        //Temporarily add items to remove to a separate collection to avoid ConcurrentModificationExceptions.
-//        List<EffectInstance> effectsToRemove = new ArrayList<EffectInstance>();
-//        for (EffectInstance effect : potionEffects) {
-//            String effectName = effect.getPotion().getRegistryName().toString();
-//            if (Arrays.asList(Config.disabledPotions).contains(effectName)) {
-//                effectsToRemove.add(effect);
-//            }
-//        }
-//        potionEffects.removeAll(effectsToRemove);
-
-        return potionEffects;
-    }
 
     /**
      * Calculates the minimum amount of time required for the given potion to be effective, and adds to the entity.

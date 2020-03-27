@@ -12,6 +12,7 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.IndirectEntityDamageSource;
@@ -42,7 +43,7 @@ public class LiquidEnchantingEvent {
 
             //Loops through each armor slot, cancelling the player render if an invisibility item is worn.
             for (ItemStack itemstack : armorStack) {
-                List<EffectInstance> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemstack.getTag());
+                List<EffectInstance> potionEffects = PotionUtils.getEffectsFromTag(itemstack.getTag());
 
                 for (EffectInstance potionEffect : potionEffects) {
                     if (potionEffect.getEffectName().equals("effect.invisibility")) {
@@ -92,7 +93,7 @@ public class LiquidEnchantingEvent {
             // Read the NBT data we saved from the bow, then parse to extract PotionEffects
             CompoundNBT potions = projectile.getPersistentData();
             if (potions.size() != 0) {
-                potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(potions);
+                potionEffects = PotionUtils.getEffectsFromTag(potions);
             }
         }
         // Entity is being attacked by player throwing hands
@@ -114,7 +115,7 @@ public class LiquidEnchantingEvent {
 
             // Check that the item we're hitting with has been crafted using our crafting manager
             if ((weapon.getTag() != null) && (weapon.getTag().getBoolean("liquid_enchanted"))) {
-                potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(weapon.getTag());
+                potionEffects = PotionUtils.getEffectsFromTag(weapon.getTag());
             }
         }
 
@@ -143,7 +144,7 @@ public class LiquidEnchantingEvent {
 
         //Loops through each armor slot, applying any worn enchantments
         for (ItemStack itemstack : armorStack) {
-            List<EffectInstance> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemstack.getTag());
+            List<EffectInstance> potionEffects = PotionUtils.getEffectsFromTag(itemstack.getTag());
 
             for (EffectInstance potionEffect : potionEffects) {
                 LiquidEnchantmentHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
@@ -164,7 +165,7 @@ public class LiquidEnchantingEvent {
 
         // If a shield was being held, apply potion effects to player
         if (shield != null) {
-            List<EffectInstance> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(shield.getTag());
+            List<EffectInstance> potionEffects = PotionUtils.getEffectsFromTag(shield.getTag());
 
             for (EffectInstance potionEffect : potionEffects) {
                 LiquidEnchantmentHelper.addPotionEffect(player, potionEffect.getPotion(), potionEffect.getAmplifier());
@@ -187,7 +188,7 @@ public class LiquidEnchantingEvent {
         // Check that the item we're viewing has been crafted using our crafting manager
         // Without this check, we double up the potion tags on potions.
         if ((itemStack.getTag() != null) && (itemStack.getTag().getBoolean("liquid_enchanted"))) {
-            List<EffectInstance> potionEffects = LiquidEnchantmentHelper.getPotionTypeFromNBT(itemStack.getTag());
+            List<EffectInstance> potionEffects = PotionUtils.getEffectsFromTag(itemStack.getTag());
 
             for (EffectInstance potionEffect : potionEffects) {
                 String level = "";
