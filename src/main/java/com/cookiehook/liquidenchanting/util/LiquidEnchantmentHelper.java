@@ -3,10 +3,8 @@ package com.cookiehook.liquidenchanting.util;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potion;
+import net.minecraft.potion.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +34,7 @@ public class LiquidEnchantmentHelper {
                 potionEffects.addAll(Potion.getPotionTypeForName(potionName).getEffects());
             }
 
-//            ListNBT customPotionList = nbtTagCompound.getList("CustomPotionEffects", 10);
-//            for (INBT tag : customPotionList) {
-//                potionEffects.add(Potion.readCustomPotionEffectFromNBT(tag);
-//            }
+            PotionUtils.addCustomPotionEffectToList(nbtTagCompound, potionEffects);
         }
 
 //        //Removes any effects which were configured as "disabled" from the list to be returned.
