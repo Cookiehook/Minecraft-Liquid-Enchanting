@@ -1,0 +1,17 @@
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[28,)" #mandatory (28 is current forge version)
+issueTrackerURL="https://github.com/Cookiehook/Minecraft-Liquid-Enchanting/issues/"
+
+[[mods]]
+modId="liquidenchanting"
+version="1.14.2_v1"
+displayName="Liquid Enchanting"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/liquid-enchanting"
+logoFile="modLogo.png" #optional
+# A text field displayed in the mod UI
+credits="MinecraftForum: Choonster, for help with custom crafting manager"
+authors="Cookiehook"
+description='''
+One potion to Take-Away please!
+'''

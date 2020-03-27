@@ -1,16 +1,14 @@
 package com.cookiehook.liquidenchanting.util;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LiquidEnchantmentHelper {
@@ -28,31 +26,32 @@ public class LiquidEnchantmentHelper {
      *
      * @param nbtTagCompound
      */
-    public static List<PotionEffect> getPotionTypeFromNBT(NBTTagCompound nbtTagCompound) {
-        List<PotionEffect> potionEffects = new ArrayList<PotionEffect>();
+    public static List<EffectInstance> getPotionTypeFromNBT(CompoundNBT nbtTagCompound) {
+        List<EffectInstance> potionEffects = new ArrayList<EffectInstance>();
+
 
         if (nbtTagCompound != null) {  // Avoids NullPointerException when going for un-enchanted gear with tooltips.
             String potionName = nbtTagCompound.getString("Potion");
-            if (!potionName.equals("") && PotionType.getPotionTypeForName(potionName) != null) {
-                potionEffects.addAll(PotionType.getPotionTypeForName(potionName).getEffects());
+            if (!potionName.equals("") && Potion.getPotionTypeForName(potionName) != null) {
+                potionEffects.addAll(Potion.getPotionTypeForName(potionName).getEffects());
             }
 
-            NBTTagList customPotionList = nbtTagCompound.getTagList("CustomPotionEffects", 10);
-            for (NBTBase tag : customPotionList) {
-                potionEffects.add(PotionEffect.readCustomPotionEffectFromNBT((NBTTagCompound) tag));
-            }
+//            ListNBT customPotionList = nbtTagCompound.getList("CustomPotionEffects", 10);
+//            for (INBT tag : customPotionList) {
+//                potionEffects.add(Potion.readCustomPotionEffectFromNBT(tag);
+//            }
         }
 
-        //Removes any effects which were configured as "disabled" from the list to be returned.
-        //Temporarily add items to remove to a separate collection to avoid ConcurrentModificationExceptions.
-        List<PotionEffect> effectsToRemove = new ArrayList<PotionEffect>();
-        for (PotionEffect effect : potionEffects) {
-            String effectName = effect.getPotion().getRegistryName().toString();
-            if (Arrays.asList(Config.disabledPotions).contains(effectName)) {
-                effectsToRemove.add(effect);
-            }
-        }
-        potionEffects.removeAll(effectsToRemove);
+//        //Removes any effects which were configured as "disabled" from the list to be returned.
+//        //Temporarily add items to remove to a separate collection to avoid ConcurrentModificationExceptions.
+//        List<EffectInstance> effectsToRemove = new ArrayList<EffectInstance>();
+//        for (EffectInstance effect : potionEffects) {
+//            String effectName = effect.getPotion().getRegistryName().toString();
+//            if (Arrays.asList(Config.disabledPotions).contains(effectName)) {
+//                effectsToRemove.add(effect);
+//            }
+//        }
+//        potionEffects.removeAll(effectsToRemove);
 
         return potionEffects;
     }
@@ -64,8 +63,8 @@ public class LiquidEnchantmentHelper {
      * @param potion    Which potion to apply
      * @param amplifier What level of potion will be applied (Careful, this is 0-indexed)
      */
-    public static void addPotionEffect(EntityLivingBase entity, Potion potion, int amplifier) {
-        PotionEffect activeEffect = entity.getActivePotionEffect(potion);
+    public static void addPotionEffect(LivingEntity entity, Effect potion, int amplifier) {
+        EffectInstance activeEffect = entity.getActivePotionEffect(potion);
         //Get the minimum amount of time needed for this potion to have an effect. Necessary to allow potions
         // like regeneration and poison to count down and have an effect on the player
         int duration = 10;
@@ -77,11 +76,11 @@ public class LiquidEnchantmentHelper {
         }
 
         //Night vision specifically flickers when given less than 10 seconds duration, hence hard-coding duration here
-        if (potion == MobEffects.NIGHT_VISION) {
-            entity.addPotionEffect(new PotionEffect(potion, 210, amplifier, false, false));
+        if (potion == Effects.NIGHT_VISION) {
+            entity.addPotionEffect(new EffectInstance(potion, 210, amplifier, false, false));
             //Add the potion effect to the target if it isn't already effected, or is about to run out.
         } else if (activeEffect == null || activeEffect.getDuration() < 10) {
-            entity.addPotionEffect(new PotionEffect(potion, duration, amplifier, false, false));
+            entity.addPotionEffect(new EffectInstance(potion, duration, amplifier, false, false));
         }
     }
 
