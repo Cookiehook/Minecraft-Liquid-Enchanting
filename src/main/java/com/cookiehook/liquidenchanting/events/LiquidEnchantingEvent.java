@@ -35,6 +35,7 @@ public class LiquidEnchantingEvent {
     private ItemStack bow;
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public void renderLivingEvent(RenderLivingEvent.Pre event) {
         Entity player = event.getEntity();
         if (event.getEntity() instanceof EntityPlayer) {
@@ -54,7 +55,7 @@ public class LiquidEnchantingEvent {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(receiveCanceled = true)
     public void ArrowLooseEvent(ArrowLooseEvent event) {
         // Save the bow actually used to fire the arrow. This is used later when the arrow is spawned.
         this.bow = event.getBow();
